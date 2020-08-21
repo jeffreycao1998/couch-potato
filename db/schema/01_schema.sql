@@ -2,9 +2,17 @@ DROP TABLE IF EXISTS order_items;
 DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS clients;
 DROP TABLE IF EXISTS menu_items;
+DROP TABLE IF EXISTS categories;
+
+
+CREATE TABLE categories (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL
+);
 
 CREATE TABLE menu_items (
   id SERIAL PRIMARY KEY NOT NULL,
+  category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE,
   name VARCHAR(255) NOT NULL,
   price INTEGER NOT NULL,
   photo_url VARCHAR(255),
