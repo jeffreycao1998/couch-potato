@@ -1,0 +1,37 @@
+DROP TABLE IF EXISTS order_items;
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS clients;
+DROP TABLE IF EXISTS menu_items;
+
+CREATE TABLE menu_items (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  price INTEGER NOT NULL,
+  photo_url VARCHAR(255),
+  description TEXT
+);
+
+
+CREATE TABLE clients (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  phone_number VARCHAR(32) NOT NULL
+);
+
+
+CREATE TABLE orders (
+  id SERIAL PRIMARY KEY NOT NULL,
+  client_id INTEGER REFERENCES clients(id) ON DELETE CASCADE,
+  message VARCHAR(255),
+  time_created TIMESTAMP NOT NULL,
+  estimated_pickup TIMESTAMP NOT NULL
+);
+
+
+CREATE TABLE order_items (
+  id SERIAL PRIMARY KEY NOT NULL,
+  order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE,
+  menu_item_id INTEGER REFERENCES menu_items(id) ON DELETE CASCADE,
+  price INTEGER NOT NULL,
+  quantity SMALLINT DEFAULT 1 NOT NULL
+);
