@@ -1,0 +1,75 @@
+#header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  .header-banner {
+    width: 1100px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+
+    .company-name {
+      color: black;
+      display: flex;
+
+      .company-logo {
+        font-size: 35px;
+      }
+    }
+
+    .cart {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 15px;
+      background-color: $colorGreen;
+
+      .cart-items {
+        margin-right: 5px;
+        line-height: 15px;
+        vertical-align: middle;
+      }
+
+      .cart-icon {
+        font-size: 20px;
+      }
+    }
+  }
+
+  nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid rgb(245, 245, 245);
+    border-bottom: 1px solid rgb(212, 212, 212);
+    box-shadow: 1px 2px 2px rgb(230, 230, 230);
+
+    ul {
+      display: flex;
+      li {
+        width: 150px;
+        height: 50px;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 600;
+        margin-right: 1px;
+
+        &:hover {
+          background-color: $colorRed;
+          color: white;
+          cursor: pointer;
+        }
+      }
+
+    }
+  }
+}
