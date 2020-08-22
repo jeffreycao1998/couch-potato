@@ -6,6 +6,7 @@
   background-repeat: repeat;
   display: flex;
   justify-content: center;
+  position: absolute;
 
   .menu-container {
     width: 1080px;
@@ -61,8 +62,11 @@
           font-weight: 600;
           color: white;
           font-size: 18px;
+          transition: background-color 0.1s ease-in;
+
           &:hover {
             cursor: pointer;
+            background-color: $colorGreenHover;
           }
         }
       }
