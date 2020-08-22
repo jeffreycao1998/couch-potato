@@ -6,6 +6,7 @@
   left: 0;
   display: none;
   z-index: 99;
+  overflow: hidden;
 
   .shade {
     width: 100%;
@@ -24,6 +25,8 @@
     right: 0;
     background-color: white;
     overflow-y: auto;
+    transform: translateX(375px);
+    transition: transform 0.4s ease-in-out;
 
     .back-container {
       padding: 20px;
