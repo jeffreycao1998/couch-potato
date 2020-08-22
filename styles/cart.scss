@@ -43,6 +43,7 @@
         letter-spacing: 1px;
         vertical-align: middle;
         text-decoration: underline;
+        user-select: none;
       }
     }
 
@@ -72,45 +73,55 @@
       overflow-y: auto;
       padding-bottom: 20px;
 
-      .cart-item-container {
-        padding: 20px 20px 0 20px;
-        margin-bottom: 20px;
+      .cart-items {
+        .cart-item-container {
+          padding: 20px 20px 0 20px;
 
-        .cart-item {
-          display: flex;
-          justify-content: space-between;
-          color: rgb(85, 85, 85);
-        }
-
-        .cart-item-buttons {
-          display: flex;
-          justify-content: space-between;
-          margin-top: 10px;
-
-          ion-icon {
-            font-size: 20px;
-            color: rgb(138, 138, 138);
-
-            &:hover {
-              cursor: pointer;
-            }
+          .cart-item {
+            display: flex;
+            justify-content: space-between;
+            color: rgb(85, 85, 85);
           }
 
-          .adjust-quantity {
+          .cart-item-buttons {
             display: flex;
-            align-items: center;
-            
-            & > * {
-              margin-left: 10px;
+            justify-content: space-between;
+            margin-top: 10px;
+
+            ion-icon {
+              font-size: 20px;
+              color: rgb(138, 138, 138);
+
+              &:hover {
+                cursor: pointer;
+              }
+            }
+
+            .adjust-quantity {
+              display: flex;
+              align-items: center;
+              
+              & > * {
+                margin-left: 10px;
+                user-select: none;
+              }
             }
           }
         }
       }
 
       .price-breakdown {
+        height: 100px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
         padding: 20px 20px 0 20px;
+        margin-top: 20px;
 
         & > * {
+          width: 100%;
           display: flex;
           justify-content: space-between;
           color: rgb(82, 82, 82);
@@ -156,6 +167,7 @@
         font-weight: 600;
         font-size: 18px;
         transition: background-color 0.2s ease-in-out;
+        user-select: none;
 
         &:hover {
           cursor: pointer;

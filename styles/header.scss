@@ -23,6 +23,7 @@
       color: black;
       display: flex;
       margin-left: 40px;
+      user-select: none;
 
       .company-logo {
         font-size: 35px;
@@ -37,11 +38,13 @@
       align-items: center;
       padding: 15px 10px;
       background-color: $colorGreen;
+      user-select: none;
+
       &:hover {
         cursor: pointer;
       }
 
-      .cart-items {
+      .cart-items-total {
         margin-right: 5px;
         line-height: 15px;
         vertical-align: middle;
@@ -72,6 +75,7 @@
         font-family: "Teko";
         font-weight: 400;
         font-size: 25px;
+        user-select: none;
 
         &:hover {
           background-color: $colorRed;

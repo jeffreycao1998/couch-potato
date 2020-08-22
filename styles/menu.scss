@@ -1,6 +1,6 @@
 #menu-page {
   margin-top: 100px;
-  min-height: 100vh;
+  min-height: 800px;
   width: 100%;
   background-image: url('../images/concrete-texture.png');
   background-repeat: repeat;
@@ -48,6 +48,7 @@
         width: 100%;
         display: flex;
         justify-content: center;
+        user-select: none;
 
         .add-to-cart {
           width: 90%;
