@@ -17,7 +17,7 @@
     a {
       position: absolute;
       left: 25px;
-      
+
       ion-icon {
         color: rgb(145, 145, 145);
         font-size: 35px;
@@ -30,5 +30,122 @@
       font-weight: 600;
       font-size: 35px;
     }
+  }
+
+  .form-title {
+    margin-top: 30px;
+    color: rgb(70, 70, 70);
+    width: 800px;
+    text-align: center;
+    font-size: 16px;
+    position: relative;
+    
+    &::before {
+      content: '';
+      width: 255px;
+      border-bottom: 1px solid rgb(160, 160, 160);
+      position: absolute;
+      left: 0;
+      top: 50%;
+    }
+
+    &::after {
+      content: '';
+      width: 255px;
+      border-bottom: 1px solid rgb(160, 160, 160);
+      position: absolute;
+      right: 0;
+      top: 50%;
+    }
+  }
+
+  .checkout-form {
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+
+    & > *:not(:last-child){
+      width: 100%;
+      border: 1px solid black;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 20px;
+
+      label {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        cursor: text;
+        transition: 0.4s ease all;
+        user-select: none;
+      }
+
+      input {
+        width: 100%;
+        border: none;
+        padding: 20px 10px 10px 10px;
+
+        &::placeholder {
+          user-select: none;
+        }
+
+        &:focus, &:not(:placeholder-shown) {
+          outline: none;
+
+          & + label {
+            top: 10px;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    .firstname {
+      width: 49%;
+      margin-right: 15px;
+    }
+
+    .lastname {
+      width: 49%;
+    }
+
+    .place-order-button {
+      background-color: $colorGreen;
+      transition: background-color 0.2s ease-in-out;
+      border: none;
+      color: white;
+      width: 70%;
+      height: 35px;
+      border-radius: 4px;
+      position: relative;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $colorGreenHover;
+      }
+
+      &:active {
+        outline: none;
+      }
+
+      .total-cost {
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  .disclaimer {
+    width: 32%;
+    font-size: 14px;
+    color: rgb(146, 146, 146);
+    margin-top: 5px;
+    text-align: left;
   }
 }
