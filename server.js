@@ -11,10 +11,12 @@ const app        = express();
 const morgan     = require('morgan');
 
 // PG database client/connection setup ---> check if we're gonna need this here, or just in db/index.js is fine
-const { Pool } = require('pg');
-const dbParams = require('./lib/db.js');
-const db = new Pool(dbParams);
-db.connect();
+
+// const { Pool } = require('pg');
+// const dbParams = require('./lib/db.js');
+// const db = new Pool(dbParams);
+// db.connect();
+const db = require('./database');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -34,12 +36,17 @@ app.use(express.static("public"));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const ordersRoutes = require("./routes/orders");
+const apiRoutes = require("./routes/apiRoutes")
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/orders", ordersRoutes(db));
+
 // Note: mount other resources here, using the same pattern above
 
+const apiRouter = express.Router();
+// apiRoutes(apiRouter, db)
+app.use("/menu", apiRoutes(apiRouter, db));
 
 // Home page
 // Warning: avoid creating more routes in this file!
