@@ -24,6 +24,11 @@
       display: flex;
       margin-left: 40px;
       user-select: none;
+      text-decoration: none;
+
+      &:hover {
+        cursor: pointer;
+      }
 
       .company-logo {
         font-size: 35px;

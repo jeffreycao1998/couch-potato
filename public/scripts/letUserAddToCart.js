@@ -1,8 +1,20 @@
 const letUserAddToCart = () => {
   $('.add-to-cart').on('click', (event) => {
-    const itemId = $(event.target).attr('class').split(' ')[1].slice(7);
-    const itemName = event.target.id.slice(0, event.target.id.length - 5);
-    const itemPrice = $(`#${itemName}-price`).text();
+    let target;
+    let itemId;
+    let itemName;
+    let itemPrice;
+
+    if ($(event.target).prop('nodeName') === "P") {
+      target = $(event.target).parent();
+    } else {
+      target = event.target;
+    }
+    console.log($(event.target).prop('nodeName'));
+    
+    itemId = $(target).attr('class').split(' ')[1].slice(7);
+    itemName = target.id.slice(0, target.id.length - 5);
+    itemPrice = $(`#${itemName}-price`).text();
 
     if (!(itemId in cartItems)) {
       cartItems[itemId] = {
