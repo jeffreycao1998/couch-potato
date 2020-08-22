@@ -31,8 +31,8 @@ CREATE TABLE orders (
   id SERIAL PRIMARY KEY NOT NULL,
   client_id INTEGER REFERENCES clients(id) ON DELETE CASCADE,
   message VARCHAR(255),
-  time_created TIMESTAMP NOT NULL,
-  estimated_pickup TIMESTAMP NOT NULL
+  time_created TIMESTAMP,
+  estimated_pickup TIMESTAMP
 );
 
 
