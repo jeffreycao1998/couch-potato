@@ -1,0 +1,134 @@
+#cart-page {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  .shade {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba($color: #000000, $alpha: .5);
+  }
+
+  .cart-container {
+    width: 375px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: white;
+    overflow-y: auto;
+
+    .back-container {
+      padding: 20px;
+      width: 100%;
+      box-shadow: rgba(80, 80, 80, 0.3) 0 1px 5px 0;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      p {
+        color: rgb(109, 109, 109);
+        font-size: 12px;
+        letter-spacing: 1px;
+        vertical-align: middle;
+        text-decoration: underline;
+      }
+    }
+
+    .description {
+      text-align: center;
+      padding: 10px 20px 0 20px;
+
+      h1 {
+        margin-bottom: 5px;
+        color: rgb(71, 71, 71);
+        font-family: "Teko";
+        font-weight: 600px;
+      }
+
+      p {
+        font-size: 12px;
+        color: rgb(116, 116, 116);
+        line-height: 18px;
+      }
+    }
+
+    .cart-content {
+      display: flex;
+      flex-direction: column;
+      align-content: space-between;
+
+      .cart-item-container {
+        padding: 20px 20px 0 20px;
+        margin-bottom: 20px;
+
+        .cart-item {
+          display: flex;
+          justify-content: space-between;
+          color: rgb(85, 85, 85);
+        }
+
+        .cart-item-buttons {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 10px;
+
+          ion-icon {
+            font-size: 20px;
+            color: rgb(138, 138, 138);
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+
+          .adjust-quantity {
+            display: flex;
+            align-items: center;
+            
+            & > * {
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+
+      .price-breakdown {
+        padding: 20px 20px 0 20px;
+
+        & > * {
+          display: flex;
+          justify-content: space-between;
+          color: rgb(82, 82, 82);
+          margin-bottom: 3px;
+        }
+
+        .total {
+          margin-top: 5px;
+        }
+      }
+      
+      .disclaimer {
+        padding: 0 20px;
+        font-size: 13px;
+        color: rgb(71, 71, 71);
+        margin-top: 5px;
+      }
+    }
+
+    .checkout-button-container {
+      height: 50px;
+      width: 100%;
+      border-top: 1px solid black;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+}
