@@ -7,7 +7,7 @@
   top: 0;
   left: 0;
   border-bottom: 1px solid rgb(180, 180, 180);
-  box-shadow: rgba(0, 0, 0, 0.3) 0 0 5px 0;
+  box-shadow: rgba(0, 0, 0, 1) 0 4px 5px -5px;
   background-color: white;
   z-index: 1;
 
@@ -58,42 +58,6 @@
       .cart-icon {
         font-size: 20px;
       }
-    }
-  }
-
-  nav {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    border-top: 1px solid rgb(250, 250, 250);
-
-    .menu-nav {
-      display: flex;
-      .menu-tab {
-        width: 158px;
-        height: 50px;
-        list-style: none;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: 1px;
-        font-family: "Teko";
-        font-weight: 400;
-        font-size: 25px;
-        user-select: none;
-
-        &:hover {
-          background-color: $colorRed;
-          color: white;
-          cursor: pointer;
-        }
-      }
-
-      #raw-tab {
-        background-color: $colorRed;
-        color: white;
-      }
-
     }
   }
 }
