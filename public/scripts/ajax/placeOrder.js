@@ -22,9 +22,10 @@ $(document).ready(() => {
     const message = $('#message').val();
     const cart = JSON.parse(Cookies.get('cart'));
 
-    const errorMessage = checkFormValues(firstname, lastname, mobile);
-
-    console.log(cart);
+    let errorMessage = checkFormValues(firstname, lastname, mobile);
+    if (Object.keys(cart).length === 0) {
+      errorMessage += "Your cart is empty. <br>";
+    }
 
     if (!errorMessage) {
       $.ajax({
@@ -36,9 +37,9 @@ $(document).ready(() => {
           cart: JSON.stringify(cart),
           message
         },
-      })
-      .then(res => {
-        console.log(JSON.parse(res));
+      }).then(res => {
+        Cookies.set('cart', JSON.stringify({}));
+        window.location.assign('/orders/confirmation');
       });
     } else {
       $('.error-message-checkout').html(errorMessage);
