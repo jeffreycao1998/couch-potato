@@ -13,5 +13,4 @@ $(document).ready(() => {
     .then(res => addMenuItems(res))
     .catch()
   })
-
 });
