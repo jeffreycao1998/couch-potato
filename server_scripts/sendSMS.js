@@ -2,18 +2,13 @@ const accountSid   = process.env.TWILIO_ACCOUNT_SID_TEST;
 const authToken    = process.env.TWILIO_AUTH_TOKEN_TEST;
 const twilioClient = require('twilio')(accountSid, authToken);
 
-const sendSMS = () => {
-  const message = `
-  Hi Jeff. Your order has been received.
-  Order#: 123456
-  
-  Do not reply.`;
+const sendSMS = (message, receiverMobile) => {
 
   twilioClient.messages
     .create({
       body: message,
-      from: '+16122554181',  // trial number
-      to: '+14168236970'  // change this to the receiver's number
+      from: `+1${process.env.OWNER_NUMBER}`,
+      to: `+1${receiverMobile}`
     })
     .then(message => console.log(message))
     .catch((err) => console.log(err));

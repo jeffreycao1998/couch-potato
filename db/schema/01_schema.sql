@@ -23,15 +23,14 @@ CREATE TABLE menu_items (
 CREATE TABLE clients (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
-  phone_number VARCHAR(32) NOT NULL
+  mobile VARCHAR(32) NOT NULL
 );
 
 
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY NOT NULL,
   client_id INTEGER REFERENCES clients(id) ON DELETE CASCADE,
-  message VARCHAR(255),
-  time_created TIMESTAMP,
+  time_created TIMESTAMP DEFAULT NOW(),
   estimated_pickup TIMESTAMP
 );
 
@@ -41,5 +40,5 @@ CREATE TABLE order_items (
   order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE,
   menu_item_id INTEGER REFERENCES menu_items(id) ON DELETE CASCADE,
   price INTEGER NOT NULL,
-  quantity SMALLINT DEFAULT 1 NOT NULL
+  quantity SMALLINT NOT NULL
 );

@@ -7,7 +7,7 @@ const checkFormValues = (firstname, lastname, mobile) => {
   if (lastname.length < 1) {
     errorMessage += 'Please enter a last name.</br>';
   }
-  if (mobile.length !== 10) {
+  if (!mobile.match(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)) {
     errorMessage += 'Please enter a valid phone number. (10 digits)</br>';
   }
 
