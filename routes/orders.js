@@ -7,6 +7,10 @@ module.exports = (db) => {
     res.render('checkout');
   });
 
+  router.get('/confirmation', (req, res) => {
+    res.render('confirmation');
+  });
+
   router.post("/place_order", (req, res) => {
     const { name, mobile, message } = req.body;
     const cart = JSON.parse(req.body.cart);
@@ -18,14 +22,16 @@ module.exports = (db) => {
         .then((client) => {
           db.createOrder(client.id, message)
           .then(order => {
+            let total = 0;
             for (let itemId in cart) {
               const quantity = cart[itemId].quantity;
               const price = cart[itemId].price * quantity;
-  
+              total += total;
+
               db.addItemToOrder(order.id, itemId, quantity, price)
             }
-            // sendSMS(`Hi, ${name}. Your order number is ${order.id}.`, mobile);
-            res.render()
+            // sendSMS(`Hi, ${name}. Your order number is ${order.id}. Your total is $${total / 100}.`, mobile);
+            return res.end();
           });
         });
       } else {
@@ -37,12 +43,11 @@ module.exports = (db) => {
 
             db.addItemToOrder(order.id, itemId, quantity, price)
           }
-          // sendSMS(`Hi, ${name}. Your order number is ${order.id}.`, mobile);
+          // sendSMS(`Hi, ${name}. Your order number is ${order.id}. Your total is $${total / 100}.`, mobile);
+          return res.end();
         });
       }
     });
-
-    res.send('works');
   });
   
   return router;
