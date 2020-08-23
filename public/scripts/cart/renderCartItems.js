@@ -12,9 +12,9 @@ const renderCartItems = () => {
       <div class="cart-item-buttons">
         <ion-icon class="remove-item remove-${itemId}" name="close-circle"></ion-icon>
         <div class="adjust-quantity">
-          <ion-icon class="increment-item increment-${itemId}" name="remove-circle-outline"></ion-icon>
+          <ion-icon class="decrement-item decrement-${itemId}" name="remove-circle-outline"></ion-icon>
           <div class="item-quantity">${cart[itemId].quantity}</div>
-          <ion-icon class="decrement-item decrement-${itemId}" name="add-circle-outline"></ion-icon>
+          <ion-icon class="increment-item increment-${itemId}" name="add-circle-outline"></ion-icon>
         </div>
       </div>
     </div>`;
