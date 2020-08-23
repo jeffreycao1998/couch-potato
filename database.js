@@ -64,6 +64,7 @@ exports.createOrder = createOrder;
  */
 
  const addItemToOrder = function(order_id, item_id, quantity, message = "") {
+  const values = [order_id, item_id, quantity, message];
   return db.query(`
     INSERT INTO order_items (order_id, menu_item_id, message, quantity, price)
     VALUES ($1, $2, $3, $4, (SELECT price FROM menu_items WHERE id = $2)) RETURNING *
