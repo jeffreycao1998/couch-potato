@@ -13,24 +13,7 @@ const letUserAddToCart = () => {
         price: itemPrice,
         quantity: 1,
       };
-
-      const template = `
-      <div id="${itemName}-cart" class="cart-item-container">
-        <div class="cart-item">
-          <h5 class="cart-item-label">${itemName.replace(/-/g,' ')}</h5>
-          <h5 class="cart-item-cost">${itemPrice}</h5>
-        </div>
-        <div class="cart-item-buttons">
-          <ion-icon name="close-circle"></ion-icon>
-          <div class="adjust-quantity">
-            <ion-icon name="remove-circle-outline"></ion-icon>
-            <div class="item-quantity">1</div>
-            <ion-icon name="add-circle-outline"></ion-icon>
-          </div>
-        </div>
-      </div>`;
-
-      $('.cart-items').append(template);
+      
     } else {
       const itemQuantity = Number($(`#${itemName}-cart`).find('.item-quantity').text());
 
@@ -42,8 +25,8 @@ const letUserAddToCart = () => {
       $(`#${itemName}-cart`).find('.item-quantity').text(itemQuantity + 1);
     }
     
-    console.log(cart);
-    getCartTotalPrice(cartItems);
-    getNumberOfCartItems(cartItems);
+    Cookies.set('cart', JSON.stringify(cart));
+
+    getNumberOfCartItems();
   });
 };

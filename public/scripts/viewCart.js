@@ -1,9 +1,13 @@
 let currentPos;
 
 $(document).ready(() => {
-
+  getCartTotalPrice();
+  
   // Reveals your cart
   $('.open-cart').on('click', () => {
+    renderCartItems();
+    getCartTotalPrice();
+
     currentPos = window.scrollY;
 
     $('#cart-page').css('display', 'block');

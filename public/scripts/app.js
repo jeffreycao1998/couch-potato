@@ -1,4 +1,6 @@
 $(document).ready(() => {
+  getNumberOfCartItems();
+
   // getUsersLocation();
 
   if (!Cookies.get('cart')) {

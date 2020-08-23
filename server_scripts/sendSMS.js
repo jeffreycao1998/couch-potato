@@ -2,8 +2,6 @@ const accountSid   = process.env.TWILIO_ACCOUNT_SID_TEST;
 const authToken    = process.env.TWILIO_AUTH_TOKEN_TEST;
 const twilioClient = require('twilio')(accountSid, authToken);
 
-
-
 const sendSMS = () => {
   const message = `
   Hi Jeff. Your order has been received.

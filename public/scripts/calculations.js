@@ -1,27 +1,25 @@
-const getCartTotalPrice = (cartItems) => {
+const getCartTotalPrice = () => {
+  const cart = JSON.parse(Cookies.get('cart'));
   let total = 0;
 
-  for (let item in cartItems) {
-    for (let i = 0; i < cartItems[item].quantity; i++) {
-      total += cartItems[item].price;
+  for (let item in cart) {
+    for (let i = 0; i < cart[item].quantity; i++) {
+      total += cart[item].price;
     };
   };
 
-  $('.subtotal-cost').text(`$${Math.round(total) / 100}`);
-  $('.tax-cost').text(`$${Math.round(total * .13) / 100}`);
-  $('.total-cost').text(`$${Math.round(total * 1.13) / 100}`);
+  $('.subtotal-cost').text(`$${(Math.round(total) / 100).toFixed(2)}`);
+  $('.tax-cost').text(`$${(Math.round(total * .13) / 100).toFixed(2)}`);
+  $('.total-cost').text(`$${(Math.round(total * 1.13) / 100).toFixed(2)}`);
 };
 
-const getNumberOfCartItems = (cartItems) => {
+const getNumberOfCartItems = () => {
+  const cart = JSON.parse(Cookies.get('cart'));
   let total = 0;
 
-  for (let item in cartItems) {
-    total += cartItems[item].quantity;
+  for (let item in cart) {
+    total += cart[item].quantity;
   };
 
   $('.cart-items-total').text(total);
 };
-
-// const getCurrentLocation = () => {
-
-// };
