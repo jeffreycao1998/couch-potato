@@ -10,20 +10,20 @@
     </div>
 
     <div class="form-title">Don't be a stranger, gimme yo numba!</div>
-    <form class="checkout-form">
+    <form action="/orders/place_order" method="POST" class="checkout-form">
       <div class="firstname">
-        <input type="text" id="firstname" placeholder=" " required>
+        <input type="text" id="firstname" name="firstname" placeholder=" " required>
         <label for="firstname">First Name</label>
       </div>
       <div class="lastname">
-        <input type="text" id="lastname" placeholder=" " required>
+        <input type="text" id="lastname" name="lastname" placeholder=" " required>
         <label for="lastname">Last Name</label>
       </div>
       <div class="mobile">
-        <input type="text" id="mobile" placeholder=" " required>
+        <input type="number" id="mobile" name="mobile" placeholder=" " required>
         <label for="mobile">Mobile</label>
       </div>
-      <button class="place-order-button">
+      <button class="place-order-button" type="submit">
         Place your order
         <div class="total-cost">$24.84</div>
       </button>
