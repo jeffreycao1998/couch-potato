@@ -1,11 +1,6 @@
 $(document).ready(() => {
   letUserAddToCart();
-
-
-
-
-
-
+  getDistanceFromStore();
 
   //on click of the menu item, load menu
   $('.menu-nav > .menu-tab').on('click', () => {

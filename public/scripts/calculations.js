@@ -21,3 +21,7 @@ const getNumberOfCartItems = (cartItems) => {
 
   $('.cart-items-total').text(total);
 };
+
+// const getCurrentLocation = () => {
+
+// };
