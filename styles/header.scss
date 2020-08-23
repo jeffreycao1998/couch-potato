@@ -37,6 +37,19 @@
       }
     }
 
+    .user-location {
+      border: 1px solid rgb(41, 41, 41);
+      border-radius: 4px;
+      display: none;
+      align-items: center;
+      color: rgb(59, 59, 59);
+      padding: 10px 20px;
+
+      .divider {
+        margin: 0 10px;
+      }
+    }
+
     .open-cart {
       display: flex;
       justify-content: center;
