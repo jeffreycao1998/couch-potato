@@ -1,7 +1,7 @@
 #header {
   display: flex;
   align-items: center;
-  flex-direction: column;
+  // flex-direction: column;
   width: 100%;
   position: fixed;
   top: 0;
@@ -54,6 +54,7 @@
       justify-content: center;
       align-items: center;
       padding: 15px 10px;
+      margin-right: 30px;
       background-color: $colorGreen;
       user-select: none;
 
