@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const { getDistanceFromLocation } = require('../serverFunctions/axios');
+const { getDistanceFromLocation } = require('../server_scripts/axios');
 
 module.exports = (db) => {
   router.get("/distanceFromStore", (req, res) => {
