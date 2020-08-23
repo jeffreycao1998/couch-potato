@@ -1,1 +1,2 @@
+const potatoesDb = {};
 const cartItems = {};

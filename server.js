@@ -33,13 +33,8 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
-
 app.use("/orders", ordersRoutes(db));
 app.use("/api", apiRoutes(db));
-
-// const apiRouter = express.Router();
-
-//app.use("/api/menu", apiRoutes(apiRouter, db));
 
 app.get("/", (req, res) => {
   res.render("index");

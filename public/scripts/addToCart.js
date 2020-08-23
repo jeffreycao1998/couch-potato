@@ -2,13 +2,13 @@ const letUserAddToCart = () => {
   $('.add-to-cart').on('click', (event) => {
     const target = event.currentTarget;
     const itemId = $(target).attr('class').split(' ')[1].slice(7);
-    const itemName = target.id.slice(0, target.id.length - 5);
-    const itemPrice = $(`#${itemName}-price`).text();
+    const itemName = potatoesDb[itemId].name.replace(/ /g,'-');
+    const itemPrice = potatoesDb[itemId].price;
 
     if (!(itemId in cartItems)) {
       cartItems[itemId] = {
-        name: itemName.replace(/-/g,' '),
-        price: Number(itemPrice.slice(1)) * 100,
+        name: itemName,
+        price: itemPrice,
         quantity: 1,
       };
 
