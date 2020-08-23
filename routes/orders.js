@@ -7,9 +7,17 @@ module.exports = (db) => {
   });
 
   router.post("/place_order", (req, res) => {
-    console.log(req.body);
+    const { name, mobile, cart } = req.body;
+
+    db.addClient({name, mobile}, (res) => {
+      console.log(res);
+    });
+
+    console.log(db);
+
     res.send('works');
   });
+  // console.log(db);
   
   return router;
 };

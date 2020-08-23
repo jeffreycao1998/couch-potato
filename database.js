@@ -7,12 +7,12 @@ const db = require('./db');
 * Get the name all categories currently in the menu
 * @return {Promise<{}>}
 */
-const getMenuCategories = function() {
+const getMenuCategories = function(cb) {
   return db.query(`
   SELECT name
   FROM categories
   `)
-  .then(res=> res.rows[0])
+  .then(res=> cb(res.rows[0]))
   .catch(e => console.error(e.stack));
 }
 exports.getMenuCategories = getMenuCategories;
@@ -23,15 +23,13 @@ exports.getMenuCategories = getMenuCategories;
  * @return {Promise<{}>} A promise to the user.
  */
 
-const getMenuItemsByCategory = function(category_id) {
+const getMenuItemsByCategory = function(category_id, cb) {
   return db.query(`
   SELECT *
   FROM menu_items
   WHERE category_id = $1
   `, [category_id])
-  .then(res => {
-    return res.rows
-  })
+  .then(res => cb(res.rows))
   .catch(e => console.error(e.stack));
 }
 exports.getMenuItemsByCategory = getMenuItemsByCategory;
@@ -45,12 +43,12 @@ exports.getMenuItemsByCategory = getMenuItemsByCategory;
  * @returns  {Promise<{}>} with order info
  */
 
-const createOrder = function(order_id, client_id) {
+const createOrder = function(order_id, client_id, cb) {
   return db.query(`
     INSERT INTO orders (order_id, client_id)
     VALUES ($1, $2) RETURNING *
     `, [order_id, client_id])
-  .then(res => res.rows[0])
+  .then(res => cb(res.rows[0]))
 }
 exports.createOrder = createOrder;
 
@@ -63,12 +61,12 @@ exports.createOrder = createOrder;
  * @returns  {Promise<{}>} Item added to the order
  */
 
- const addItemToOrder = function(order_id, item_id, quantity, message = "") {
+ const addItemToOrder = function(order_id, item_id, quantity, message="", cb) {
   return db.query(`
     INSERT INTO order_items (order_id, menu_item_id, message, quantity, price)
     VALUES ($1, $2, $3, $4, (SELECT price FROM menu_items WHERE id = $2)) RETURNING *
     `, values)
-    .then(res => res.rows[0])
+    .then(res => cb(res.rows[0]))
     .catch(e => console.error(e.stack))
  }
  exports.addItemToOrder = addItemToOrder;
@@ -80,13 +78,13 @@ exports.createOrder = createOrder;
  * @param {Object} client who made the order
  * @returns {Promise<{}>} with order info
  */
-const submitOrder = function(order_id) {
+const submitOrder = function(order_id, cb) {
   return db.query(`
   UPDATE orders
   SET time_created = NOW()::TIMESTAMP
   WHERE id = $1
   `, [order_id])
-  .then(res => res.rows[0])
+  .then(res => cb(res.rows[0]))
   .catch(e => console.error(e.stack))
 }
 exports.submitOrder = submitOrder;
@@ -99,14 +97,14 @@ exports.submitOrder = submitOrder;
  * @returns {Promise<{}>}
  */
 
- const addEstimatedPickup = function(order_id, estimatedTime) {
+ const addEstimatedPickup = function(order_id, estimatedTime, cb) {
   return db.query(`
   UPDATE orders
   SET estimated_pickup = $2
   WHERE id = $1
   `, [order_id, estimatedTime]
   )
-  .then(res => res.rows[0])
+  .then(res => cb(res.rows[0]))
   .catch(e => console.error(e.stack))
  }
 exports.addEstimatedPickup = addEstimatedPickup;
@@ -118,12 +116,12 @@ exports.addEstimatedPickup = addEstimatedPickup;
  * @returns {Promise<{}>} id, name and mobile
  */
 
-const addClient = function(client) {
+const addClient = function(client, cb) {
   return db.query(`
   INSERT INTO clients (name, mobile)
   VALUES ($1, $2) RETURNING *;
   `, [client.name, client.mobile])
-  .then(res => res.rows[0])
+  .then(res => cb(res.rows[0]))
   .catch(e => console.error(e.stack));
 }
 exports.addClient = addClient;
@@ -133,13 +131,13 @@ exports.addClient = addClient;
  * @param {Object} client with name and mobile number
  * @returns {Promise<{}>} id, name and mobile
  */
-const findClient = function(name, mobile) {
+const findClient = function(name, mobile, cb) {
   const values = [ `%${name}%`, mobile];
   return db.query(`SELECT *
   FROM clients
   WHERE name LIKE $1 AND mobile = $2
   `, values)
-  .then(res=> res.rows[0])
+  .then(res=> cb(res.rows[0]))
   .catch(e => console.error(e.stack));
 }
 exports.findClient = findClient;

@@ -23,7 +23,7 @@ CREATE TABLE menu_items (
 CREATE TABLE clients (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
-  phone_number VARCHAR(32) NOT NULL
+  mobile VARCHAR(32) NOT NULL
 );
 
 

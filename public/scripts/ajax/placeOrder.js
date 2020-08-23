@@ -28,8 +28,7 @@ $(document).ready(() => {
         url: '/orders/place_order',
         method: 'POST',
         data: { 
-          firstname,
-          lastname,
+          name: `${firstname} ${lastname}`,
           mobile,
           cart
         },
