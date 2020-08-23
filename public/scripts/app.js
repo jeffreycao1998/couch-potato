@@ -1,5 +1,5 @@
 $(document).ready(() => {
   letUserAddToCart();
 
-  getDistanceFromStore();
+  // getDistanceFromStore();
 });
