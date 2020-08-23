@@ -9,6 +9,9 @@
       <h2>CHECKOUT</h2>
     </div>
 
+    <div class="error-message-checkout">
+      Wrong something!
+    </div>
     <div class="form-title">Don't be a stranger, gimme yo numba!</div>
     <form action="/orders/place_order" method="POST" class="checkout-form">
       <div class="firstname">
@@ -20,10 +23,10 @@
         <label for="lastname">Last Name</label>
       </div>
       <div class="mobile">
-        <input type="number" id="mobile" name="mobile" placeholder=" " required>
+        <input type="tel" id="mobile" name="mobile" placeholder=" " required>
         <label for="mobile">Mobile</label>
       </div>
-      <button class="place-order-button" type="submit">
+      <button class="place-order-button" type="button">
         Place your order
         <div class="total-cost">$24.84</div>
       </button>
