@@ -1,5 +1,6 @@
 const express = require('express');
 const router  = express.Router();
+const { sendSMS } = require('../server_scripts/sendSMS');
 
 module.exports = (db) => {
   router.get("/checkout", (req, res) => {
@@ -7,17 +8,42 @@ module.exports = (db) => {
   });
 
   router.post("/place_order", (req, res) => {
-    const { name, mobile, cart } = req.body;
+    const { name, mobile, message } = req.body;
+    const cart = JSON.parse(req.body.cart);
 
-    db.addClient({name, mobile}, (res) => {
-      console.log(res);
+    db.findClient(name, mobile)
+    .then(client => {
+      if (!client) {
+        db.addClient({name, mobile})
+        .then((client) => {
+          db.createOrder(client.id, message)
+          .then(order => {
+            for (let itemId in cart) {
+              const quantity = cart[itemId].quantity;
+              const price = cart[itemId].price * quantity;
+  
+              db.addItemToOrder(order.id, itemId, quantity, price)
+            }
+            // sendSMS(`Hi, ${name}. Your order number is ${order.id}.`, mobile);
+            res.render()
+          });
+        });
+      } else {
+        db.createOrder(client.id, message)
+        .then(order => {
+          for (let itemId in cart) {
+            const quantity = cart[itemId].quantity;
+            const price = cart[itemId].price * quantity;
+
+            db.addItemToOrder(order.id, itemId, quantity, price)
+          }
+          // sendSMS(`Hi, ${name}. Your order number is ${order.id}.`, mobile);
+        });
+      }
     });
-
-    console.log(db);
 
     res.send('works');
   });
-  // console.log(db);
   
   return router;
 };

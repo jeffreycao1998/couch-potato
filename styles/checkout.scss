@@ -62,7 +62,7 @@
 
     &::after {
       content: '';
-      width: 105px;
+      width: 105;
       border-bottom: 1px solid rgb(160, 160, 160);
       position: absolute;
       right: 0;
@@ -72,16 +72,15 @@
 
   .checkout-form {
     width: 500px;
-    height: 155px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 20px;
 
-    & > *:not(:last-child){
+    & > *{
       width: 100%;
       border: 2px solid black;
-      border-radius: 4px;
+      border-radius: 2px;
       position: relative;
       overflow: hidden;
       margin-bottom: 20px;
@@ -124,33 +123,72 @@
     .lastname {
       width: 49%;
     }
+  }
 
-    .place-order-button {
-      background-color: $colorGreen;
-      transition: background-color 0.2s ease-in-out;
-      border: none;
-      color: white;
-      width: 100%;
-      height: 35px;
-      border-radius: 4px;
-      position: relative;
+  .extra-details-title {
+    margin-top: 10px;
+    color: rgb(70, 70, 70);
+    width: 500px;
+    text-align: center;
+    font-size: 16px;
+    position: relative;
+    
+    &::before {
+      content: '';
+      width: 95px;
+      border-bottom: 1px solid rgb(160, 160, 160);
+      position: absolute;
+      left: 0;
+      top: 50%;
+    }
+
+    &::after {
+      content: '';
+      width: 95px;
+      border-bottom: 1px solid rgb(160, 160, 160);
+      position: absolute;
+      right: 0;
+      top: 50%;
+    }
+  }
+
+  #extra-details {
+    width: 500px;
+    resize: none;
+    overflow-y: auto;
+    height: 80px;
+    margin-top: 10px;
+    border: 2px solid rgb(70, 70, 70);
+    border-radius: 2px;
+    padding: 5px;
+  }
+
+  .place-order-button {
+    background-color: $colorGreen;
+    transition: background-color 0.2s ease-in-out;
+    border: none;
+    color: white;
+    width: 500px;
+    height: 35px;
+    border-radius: 4px;
+    position: relative;
+    outline: none;
+    margin-top: 20px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $colorGreenHover;
+    }
+
+    &:active {
       outline: none;
+    }
 
-      &:hover {
-        cursor: pointer;
-        background-color: $colorGreenHover;
-      }
-
-      &:active {
-        outline: none;
-      }
-
-      .total-cost {
-        position: absolute;
-        top: 50%;
-        right: 15px;
-        transform: translateY(-50%);
-      }
+    .total-cost {
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
     }
   }
 

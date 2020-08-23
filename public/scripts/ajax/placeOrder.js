@@ -19,9 +19,12 @@ $(document).ready(() => {
     const firstname = $('#firstname').val();
     const lastname = $('#lastname').val();
     const mobile = $('#mobile').val();
+    const message = $('#message').val();
     const cart = JSON.parse(Cookies.get('cart'));
 
     const errorMessage = checkFormValues(firstname, lastname, mobile);
+
+    console.log(cart);
 
     if (!errorMessage) {
       $.ajax({
@@ -30,7 +33,8 @@ $(document).ready(() => {
         data: { 
           name: `${firstname} ${lastname}`,
           mobile,
-          cart
+          cart: JSON.stringify(cart),
+          message
         },
       })
       .then(res => {
