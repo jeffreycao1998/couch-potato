@@ -2,13 +2,15 @@ const express = require('express');
 const router  = express.Router();
 const { sendSMS } = require('../server_scripts/sendSMS');
 
+let confirmationData;
+
 module.exports = (db) => {
   router.get("/checkout", (req, res) => {
     res.render('checkout');
   });
 
   router.get('/confirmation', (req, res) => {
-    res.render('confirmation');
+    res.render('confirmation', confirmationData);
   });
 
   router.post("/place_order", (req, res) => {
@@ -31,6 +33,11 @@ module.exports = (db) => {
               db.addItemToOrder(order.id, itemId, quantity, price)
             }
             // sendSMS(`Hi, ${name}. Your order number is ${order.id}. Your total is $${total / 100}.`, mobile);
+            confirmationData = {
+              client,
+              order,
+              total,
+            }
             return res.end();
           });
         });
@@ -44,6 +51,11 @@ module.exports = (db) => {
             db.addItemToOrder(order.id, itemId, quantity, price)
           }
           // sendSMS(`Hi, ${name}. Your order number is ${order.id}. Your total is $${total / 100}.`, mobile);
+          confirmationData = {
+            client,
+            order,
+            total,
+          }
           return res.end();
         });
       }
