@@ -9,14 +9,18 @@ const sendSMS = () => {
   Hi Jeff. Your order has been received.
   Order#: 123456
   
-  Do not reply.`
+  Do not reply.`;
 
   twilioClient.messages
     .create({
       body: message,
-      from: '+16122554181',  // this is a trial number (sends a default message)
+      from: '+16122554181',  // trial number
       to: '+14168236970'  // change this to the receiver's number
     })
     .then(message => console.log(message))
     .catch((err) => console.log(err));
 };
+
+module.exports = {
+  sendSMS
+}

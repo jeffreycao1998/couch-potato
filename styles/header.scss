@@ -38,12 +38,11 @@
     }
 
     .user-location {
-      border: 1px solid rgb(41, 41, 41);
-      border-radius: 4px;
       display: none;
       align-items: center;
-      color: rgb(59, 59, 59);
+      color: rgb(139, 139, 139);
       padding: 10px 20px;
+      font-size: 16px;
 
       .divider {
         margin: 0 10px;
