@@ -29,7 +29,9 @@ const getMenuItemsByCategory = function(category_id) {
   FROM menu_items
   WHERE category_id = $1
   `, [category_id])
-  .then(res => res.rows)
+  .then(res => {
+    return res.rows
+  })
   .catch(e => console.error(e.stack));
 }
 exports.getMenuItemsByCategory = getMenuItemsByCategory;
