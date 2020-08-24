@@ -33,6 +33,10 @@ nav {
       }
     }
 
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+
     .selected-nav-item {
       background-color: $colorRed;
       color: white;
