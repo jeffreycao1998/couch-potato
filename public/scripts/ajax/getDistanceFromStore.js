@@ -1,5 +1,4 @@
 const getDistanceFromStore = (userCoordinates) => {
-  console.log(userCoordinates);
   $.ajax({
     url: '/api/distanceFromStore',
     method: 'POST',

@@ -17,9 +17,7 @@ module.exports = (db) => {
 
     const data = {
       total,
-      name: client.name,
-      mobile: client.mobile,
-      orderNumber: order.id,
+      mobile: client.mobile
     }
 
     if (hour / 12 > 1) {
@@ -56,7 +54,7 @@ module.exports = (db) => {
             confirmationData = {
               client,
               order,
-              total: total,
+              total
             }
             return res.end();
           });

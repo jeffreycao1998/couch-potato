@@ -1,5 +1,3 @@
-// See: https://sass-lang.com/
-
 *, h1, h2, h3, h4, h5, h6, p {
   box-sizing: border-box;
   margin: 0;
@@ -23,3 +21,5 @@ html {
 @import "confirmation.scss";
 
 @import "footer.scss";
+
+@import "mediaQueries.scss";
