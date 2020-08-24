@@ -1,3 +1,5 @@
+$phone-width: 480px;
+
 #menu-page {
   margin-top: 101px;
   min-height: 720px;
@@ -12,6 +14,7 @@
     display: flex;
     flex-wrap: wrap;
     margin: 10px 0 10px 0;
+    justify-content: flex-start;
 
     .menu-item {
       width: 250px;
@@ -69,6 +72,10 @@
           }
         }
       }
+
+    }
+    @media screen and (max-width: $phone-width) {
+        justify-content: space-evenly;
     }
   }
 }
