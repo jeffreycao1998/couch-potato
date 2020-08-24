@@ -11,22 +11,14 @@ module.exports = (db) => {
 
   router.get('/confirmation', (req, res) => {
     const {client, order, total} = confirmationData;
-    const hour = Number(order.estimated_pickup.toString().slice(16, 18));
-    const minute = Number(order.estimated_pickup.toString().slice(19, 21));
-    let time = '';
+
+    console.log(order.id);
 
     const data = {
       total,
-      mobile: client.mobile
+      mobile: client.mobile,
+      orderNumber: order.id
     }
-
-    if (hour / 12 > 1) {
-      time += `${hour % 12}:${minute}pm`;
-    } else {
-      time += `${hour % 12}:${minute}am`;
-    }
-
-    data.estimatedPickup = time;
 
     res.render('confirmation', data);
   });
@@ -80,6 +72,10 @@ module.exports = (db) => {
         });
       }
     });
+  });
+
+  router.get('/:id', (req, res) => {
+    res.send(`${req.params}`);
   });
   
   return router;

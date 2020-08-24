@@ -6,16 +6,16 @@
   <section id="confirmation-page">
     <div class="confirmation-page-container">
       <ion-icon name="checkmark-circle-outline"></ion-icon>
-      <h2>We have your received your order!</h2>
+      <h2>We have received your order!</h2>
       <div class="order-details">
-        <div class="ready-time">
-          Your order will be ready at <u><%= estimatedPickup %> </u>
+        <div class="order-number">
+          Order #: <a href="/orders/<%= orderNumber %>"><%= orderNumber %></a>
         </div>
         <div class="phone-number-given">
-          A confirmation text has been sent to <u><%= mobile %> </u>
+          A confirmation text has been sent to <%= mobile %>
         </div>
         <div class="total-price">
-          Your total is <u>$<%= (total / 100).toFixed(2) %></u>
+          Your total is $<%= (total / 100).toFixed(2) %>
         </div>
       </div>
       <div class="google-map">
