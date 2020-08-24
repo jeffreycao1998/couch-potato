@@ -1,3 +1,10 @@
+.rainbow-text {
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red); 
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
 #menu-page {
   margin-top: 101px;
   min-height: 720px;
@@ -10,8 +17,34 @@
   .menu-container {
     width: 1080px;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     margin: 10px 0 10px 0;
+
+    .meme-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px 30px 30px 30px;
+      border-radius: 2px;
+      box-shadow: 5px 5px 20px rgb(218, 218, 218);
+
+      h1 {
+        text-align: center;
+        font-size: 40px;
+        margin-bottom: 20px;
+      }
+
+      img {
+        width: 400px;
+        height: 400px;
+        background-image: url('../images/im-a-potato.jpg');
+        background-size: contain;
+        background-repeat: none;
+      }
+    }
 
     .menu-item {
       width: 250px;

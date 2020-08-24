@@ -1,2 +1,2 @@
 const potatoesDb = {};
-const cartItems = {};
+const userCoords = {};
