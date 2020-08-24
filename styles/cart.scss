@@ -28,6 +28,9 @@
     transform: translateX(375px);
     transition: transform 0.4s ease-in-out;
 
+    @media screen and (max-width: 375px) {
+      width: 100%;
+    }
     .back-container {
       padding: 20px;
       width: 100%;
