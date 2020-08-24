@@ -11,12 +11,8 @@
         font-size: 16px;
       }
 
-      .open-cart {
-        position: absolute;
-        bottom: calc(-100vh + 50px);
-        right: 0;
-        width: calc(100% - 186px);
-        margin: 0;
+      .open-cart-header {
+        display: none;
       }
     }
   }
@@ -45,9 +41,9 @@
   }
 
   #menu-page {
-    margin: 51px 0 50px 186px;
+    margin: 51px 0 0 186px;
     padding-bottom: 45px;
-    min-height: calc(100vh - 51px - 30px);
+    min-height: calc(100vh - 51px);
     width: calc(100% - 186px);
 
     .menu-container {
@@ -68,6 +64,10 @@
           background-repeat: none;
         }
       }
+    }
+
+    .open-cart-menu {
+      display: flex;
     }
   }
 

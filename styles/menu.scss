@@ -118,4 +118,31 @@
       }
     }
   }
+
+  .open-cart-menu {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 10px;
+    background-color: $colorGreen;
+    user-select: none;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: calc(100% - 186px);
+    margin: 0;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    p {
+      line-height: 15px;
+      vertical-align: middle;
+      font-size: 30px;
+      color: white;
+      letter-spacing: 5px;
+      font-family: 'Teko';
+    }
+  }
 }
