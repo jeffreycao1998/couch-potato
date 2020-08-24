@@ -30,8 +30,9 @@ CREATE TABLE clients (
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY NOT NULL,
   client_id INTEGER REFERENCES clients(id) ON DELETE CASCADE,
-  time_created TIMESTAMP DEFAULT NOW(),
-  estimated_pickup TIMESTAMP
+  message TEXT,
+  time_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  estimated_pickup TIMESTAMP DEFAULT CURRENT_TIMESTAMP + '00:30'
 );
 
 

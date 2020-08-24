@@ -10,7 +10,27 @@ module.exports = (db) => {
   });
 
   router.get('/confirmation', (req, res) => {
-    res.render('confirmation', confirmationData);
+    const {client, order, total} = confirmationData;
+    const hour = Number(order.estimated_pickup.toString().slice(16, 18));
+    const minute = Number(order.estimated_pickup.toString().slice(19, 21));
+    let time = '';
+
+    const data = {
+      total,
+      name: client.name,
+      mobile: client.mobile,
+      orderNumber: order.id,
+    }
+
+    if (hour / 12 > 1) {
+      time += `${hour % 12}:${minute}pm`;
+    } else {
+      time += `${hour % 12}:${minute}am`;
+    }
+
+    data.estimatedPickup = time;
+
+    res.render('confirmation', data);
   });
 
   router.post("/place_order", (req, res) => {
@@ -28,7 +48,7 @@ module.exports = (db) => {
             for (let itemId in cart) {
               const quantity = cart[itemId].quantity;
               const price = cart[itemId].price * quantity;
-              total += total;
+              total += price;
 
               db.addItemToOrder(order.id, itemId, quantity, price)
             }
@@ -36,7 +56,7 @@ module.exports = (db) => {
             confirmationData = {
               client,
               order,
-              total,
+              total: total,
             }
             return res.end();
           });
@@ -44,9 +64,11 @@ module.exports = (db) => {
       } else {
         db.createOrder(client.id, message)
         .then(order => {
+          let total = 0;
           for (let itemId in cart) {
             const quantity = cart[itemId].quantity;
             const price = cart[itemId].price * quantity;
+            total += price;
 
             db.addItemToOrder(order.id, itemId, quantity, price)
           }

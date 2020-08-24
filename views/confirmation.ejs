@@ -1,9 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include partials/_head %>
-<%- include('partials/_header', {}) %>
+<%- include partials/_header %>
 <body>
-  <h1>CONFIRM</h1>
+  <section id="confirmation-page">
+    <div class="confirmation-page-container">
+      <ion-icon name="checkmark-circle-outline"></ion-icon>
+      <h2>We have your received your order!</h2>
+      <div class="order-details">
+        <div class="ready-time">
+          Your order will be ready at <u><%= estimatedPickup %> </u>
+        </div>
+        <div class="phone-number-given">
+          A confirmation text has been sent to <u><%= mobile %> </u>
+        </div>
+        <div class="total-price">
+          Your total comes up to <u>$<%= (total / 100).toFixed(2) %></u>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 <%- include partials/_footer %>
 </html>
