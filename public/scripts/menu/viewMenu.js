@@ -30,13 +30,20 @@ $(document).ready(() => {
     let classClicked =  event.target.className;
     const category = classClicked.split(' ')[1];
 
+    if ($('.menu-icon').is(':visible')) {
+      $('.menu-tab').slideUp('fast');
+      $('.menu-container').css('margin-top', '10px');
+    }
+
     $('.menu-tab').removeClass('selected-nav-item');
-    event.target.classList.add('selected-nav-item');    
+    event.target.classList.add('selected-nav-item');
     getItemsOfCategory(category);
+
+
   });
 
   $('.menu-icon').on('click', () => {
-    
+
     if ($('.menu-tab').is(':visible')) {
       $('.menu-tab').slideUp('fast');
       $('.menu-container').css('margin-top', '10px');
