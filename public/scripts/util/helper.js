@@ -2,11 +2,12 @@
 const toggleScrollOn = (selector, currentPos) => {
   const element = $(`${selector}`);
 
-  if (element.css('position') === 'static') {
+  if (element.css('position') === 'relative') {
     element.css('top', `-${currentPos}px`);
     element.css('position', 'fixed');
   } else if (element.css('position') === 'fixed') {
-    element.css('position', 'static');
+    element.css('position', 'relative');
+    element.css('top', '0');
     window.scrollTo(0, currentPos);
   }
 };
