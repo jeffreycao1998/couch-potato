@@ -5,7 +5,42 @@
 <body>
 
   <section id="order-page">
-    <h1>hi</h1>
+    <div class="order-details-container">
+      <h2 class="title">Order Details</h2>
+      <div class="order-detail-content">
+        <h4 class="order-id-detail"># <%= orderId %></h4>
+        <div class="order-ready-detail">
+          <h4>Pickup Time: </h4>
+          <p><%= pickupTime %></p>
+        </div>
+
+        <% for (let i = 0; i < quantities.length; i++) { %>
+          <div class="item-detail">
+            <div class="item-detail-left">
+              <img src="<%= photoUrls[i] %>">
+              <h4><%= itemNames[i] %>&nbsp;</h4>
+            </div>
+            <div class="item-detail-right">
+              <h4 class="quantities">x <%= quantities[i] %></h4>
+              <h4 class="prices">$<%= prices[i] %></h4>
+            </div>
+          </div>
+        <% } %>
+
+        <div class="subtotal-detail">
+          <h4>Subtotal</h4>
+          <h4>$<%= subtotal %></h4>
+        </div>
+        <div class="tax-detail">
+          <h4>Tax</h4>
+          <h4>$<%= tax %></h4>
+        </div>
+        <div class="total-detail">
+          <h3>Total</h3>
+          <h3>$<%= total %></h3>
+        </div>
+      </div>
+    </div>
   </section>
 
   <%- include('partials/_cart', {}) %>
