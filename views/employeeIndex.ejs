@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include partials/_head %>
+<%- include('partials/_employeeHeader', {}) %>
+<body>
+  <section id="employee-main-page">
+  
+    <div class="incoming-orders">
+
+      <% for (let order in newOrders) { %>
+        <div class="order-card">
+          <div class="order-information">
+            <h4 class="order-num"><a href="/orders/<%= order %>" target="_blank">#<%= order %></a></h4>
+            <h4 class="order-time"><%= newOrders[order].time_created %></h4>
+          </div>
+          <% for (let item in newOrders[order].items) { %>
+            <div class="order-item">
+              <h4 class="item-quantity"><%= newOrders[order].items[item] %>x</h4>
+              <h4 class="item-name"><%= item %></h4>
+            </div>
+          <% } %>
+          <div class="message"><%= newOrders[order].message %></div>
+          <div class="add-pickup-time-buttons">
+            <ul>
+              <li class="add-pickup-time newOrder-<%= order %>">15</li>
+              <li class="add-pickup-time neworder-<%= order %>">30</li>
+              <li class="add-pickup-time newOrder-<%= order %>">45</li>
+              <li class="add-pickup-time newOrder-<%= order %>">60</li>
+            </ul>
+          </div>
+        </div>
+      <% } %>
+    </div>
+
+    <div class="processed-orders">
+      <% for (let order in oldOrders) { %>
+        <div class="order-card oldOrder-<%= order %>">
+          <div class="order-information">
+            <h4 class="order-num"><a href="/orders/<%= order %>" target="_blank">#<%= order %></a></h4>
+            <h4 class="order-time"><%= oldOrders[order].time_created %></h4>
+          </div>
+
+          <% for (let item in oldOrders[order].items) { %>
+            <div class="order-item">
+              <h4 class="item-quantity"><%= oldOrders[order].items[item] %>x</h4>
+              <h4 class="item-name"><%= item %></h4>
+            </div>
+          <% } %>
+          
+          <div class="message"><%= oldOrders[order].message %></div>
+          <div class="pickup-time"><%= oldOrders[order].estimated_pickup %></div>
+        </div>
+      <% } %>
+    </div>
+
+  </section>
+</body>
+<%- include partials/_footer %>
+</html>

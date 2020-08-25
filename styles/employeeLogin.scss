@@ -1,0 +1,99 @@
+#employee-login-page {
+  margin-top: 51px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .employee-login-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    width: 100%;
+    background-image: url('../images/concrete-texture.png');
+    background-repeat: repeat;
+
+    h2 {
+      font-family: 'Teko';
+      color: rgb(75, 75, 75);
+      font-weight: 600;
+      font-size: 35px;
+    }
+  }
+
+  .checkout-form {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+
+    & > *{
+      width: 100%;
+      border: 2px solid black;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 20px;
+
+      label {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        cursor: text;
+        transition: 0.4s ease all;
+        user-select: none;
+      }
+
+      input {
+        width: 100%;
+        border: none;
+        padding: 20px 10px 10px 10px;
+
+        &::placeholder {
+          user-select: none;
+        }
+
+        &:focus, &:not(:placeholder-shown) {
+          outline: none;
+
+          & + label {
+            top: 10px;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    .employee-login-button {
+    background-color: $colorGreen;
+    transition: background-color 0.2s ease-in-out;
+    border: none;
+    color: white;
+    width: 500px;
+    height: 35px;
+    border-radius: 4px;
+    position: relative;
+    outline: none;
+    margin-top: 20px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $colorGreenHover;
+    }
+
+    &:active {
+      outline: none;
+    }
+
+    .total-cost {
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+    }
+  }
+  }
+}

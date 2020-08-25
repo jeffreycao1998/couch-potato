@@ -110,7 +110,8 @@ module.exports = (db) => {
       data.total = (Math.round((data.subtotal * 1.13).toFixed(2)/0.05) * 0.05).toFixed(2);
 
       res.render('order', data);
-    });
+    })
+    .catch((err) => res.send('invalid order number'));
   });
   
   return router;

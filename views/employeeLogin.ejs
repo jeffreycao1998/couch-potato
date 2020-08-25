@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include partials/_head %>
+<%- include('partials/_employeeHeader', {}) %>
+<body>
+  <section id="employee-login-page">
+
+    <div class="employee-login-banner">
+      <h2>EMPLOYEE LOGIN</h2>
+    </div>
+
+    <form action="/employee/login" method="POST" class="checkout-form">
+
+      <div class="employee-userrname">
+        <input type="text" id="employee-username" name="employeeUsername" placeholder=" " required>
+        <label for="employee-username">Userrname</label>
+      </div>
+
+      <div class="employee-password">
+        <input type="password" id="employee-password" name="employeePassword" placeholder=" " required>
+        <label for="employee-password">Password</label>
+      </div>
+
+      <button class="employee-login-button" type="submit">Login</button>
+
+    </form>
+
+  </section>
+</body>
+<%- include partials/_footer %>
+</html>
