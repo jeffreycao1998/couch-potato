@@ -58,8 +58,6 @@ module.exports = (db) => {
           }
         })
 
-        console.log(oldOrders);
-
         res.render('employeeIndex', {newOrders, oldOrders});
       })
       .catch(err => console.error(err));

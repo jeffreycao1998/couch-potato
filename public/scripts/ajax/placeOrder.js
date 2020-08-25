@@ -19,8 +19,10 @@ $(document).ready(() => {
     const firstname = $('#firstname').val();
     const lastname = $('#lastname').val();
     const mobile = $('#mobile').val();
-    const message = $('#message').val();
+    const message = $('#extra-details').val();
     const cart = JSON.parse(Cookies.get('cart'));
+
+    console.log('message: ', message);
 
     let errorMessage = checkFormValues(firstname, lastname, mobile);
     if (Object.keys(cart).length === 0) {

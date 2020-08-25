@@ -27,6 +27,8 @@ module.exports = (db) => {
     const { name, mobile, message } = req.body;
     const cart = JSON.parse(req.body.cart);
 
+    // console.log(message);
+
     db.findClient(name, mobile)
     .then(client => {
       if (!client) {

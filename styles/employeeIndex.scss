@@ -9,7 +9,7 @@
 
   .incoming-orders {
     border: 2px solid $colorRed;
-    width: 45%;
+    width: 46%;
     height: 80%;
     margin-right: 40px;
     border-radius: 4px;
@@ -96,7 +96,7 @@
 
   .processed-orders {
     border: 2px solid $colorGreen;
-    width: 45%;
+    width: 46%;
     height: 80%;
     border-radius: 4px;
     padding: 20px;
@@ -155,6 +155,12 @@
         color: white;
         background-color: $colorGreen;
         font-weight: 600;
+        transition: background-color 0.2s ease-in-out;
+
+        &:hover {
+          cursor: pointer;
+          background-color: $colorGreenHover;
+        }
       }
     }
   }
