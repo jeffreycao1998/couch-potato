@@ -1,0 +1,93 @@
+#order-page {
+  margin-top: 71px;
+  display: flex;
+  justify-content: center;
+  height: calc(100% - 51px -30px);
+  width: 100%;
+  
+
+  .order-details-container {
+    width: calc(100% - 20px);
+    max-width: 400px;
+    box-shadow: 1px 2px 4px 4px rgb(238, 238, 238);
+    border-radius: 2px;
+    overflow: hidden;
+
+    .title {
+      padding: 20px 20px;
+      background-color: $colorRed;
+      color: white;
+    }
+
+    .order-detail-content {
+      padding: 20px;
+
+      .order-id-detail {
+        margin-bottom: 10px;
+      }
+
+      .order-ready-detail {
+        display: flex;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgb(221, 221, 221);
+
+        h4 {
+          margin-right: 10px;
+        }
+      }
+
+      .item-detail {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        .item-detail-left {
+          display: flex;
+
+          img {
+            width: 70px;
+            height: 70px;
+            margin-right: 10px;
+            background-size: contain;
+            border-radius: 4px;
+            border: 1px solid black;
+          }
+        }
+
+        .item-detail-right {
+          display: flex;
+
+          .quantities {
+            text-align: right;
+            width: 30px;
+          }
+
+          .prices {
+            text-align: right;
+            width: 65px;
+          }
+        }
+      }
+
+      .subtotal-detail {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        padding-top: 10px;
+        border-top: 1px solid rgb(221, 221, 221);
+      }
+
+      .tax-detail {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .total-detail {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+      }
+    }
+  }
+}

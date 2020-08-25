@@ -15,7 +15,7 @@ module.exports = (db) => {
     console.log(order.id);
 
     const data = {
-      total,
+      total: (total / 100).toFixed(2),
       mobile: client.mobile,
       orderNumber: order.id
     }
@@ -75,7 +75,42 @@ module.exports = (db) => {
   });
 
   router.get('/:id', (req, res) => {
-    res.send(`${req.params}`);
+    db.getOrderDetails(req.params.id)
+    .then(details => {
+      const name = details[0].name;
+      const mobile = details[0].mobile;
+      const message = details[0].message || ' ';
+      const itemNames = [];
+      const photoUrls = [];
+      const quantities = [];
+      const prices = [];
+      const pickupTime = details[0].pickuptime || 'awaiting response from restaurant...';
+
+      details.forEach((item) => {
+        itemNames.push(item.itemname);
+        photoUrls.push(item.photourl);
+        quantities.push(item.quantity);
+        prices.push((item.price / 100).toFixed(2));
+      })
+
+      const data = {
+        name,
+        mobile,
+        message,
+        itemNames,
+        photoUrls,
+        quantities,
+        prices,
+        pickupTime,
+        orderId: req.params.id,
+        subtotal: prices.reduce((total, price) => total + Number(price), 0),
+      }
+
+      data.tax = (data.subtotal * 0.13).toFixed(2);
+      data.total = (Math.round((data.subtotal * 1.13).toFixed(2)/0.05) * 0.05).toFixed(2);
+
+      res.render('order', data);
+    });
   });
   
   return router;
