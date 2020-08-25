@@ -1,5 +1,5 @@
 
-$phone-width: 480px;
+$phone-width: 500px;
 
 nav {
   width: 100%;
@@ -36,11 +36,13 @@ nav {
 
       @media screen and (max-width: $phone-width) {
         width: 50%;
+        list-style:none;
         display: none;
         text-align: center;
       }
 
       @media screen and (min-width: $phone-width+1) {
+        list-style: none;
         display: flex;
       }
     }
