@@ -36,7 +36,8 @@ nav {
 
       @media screen and (max-width: $phone-width) {
         width: 50%;
-
+        display: none;
+        text-align: center;
       }
 
       @media screen and (min-width: $phone-width+1) {
