@@ -76,6 +76,22 @@ module.exports = (db) => {
     });
   });
 
+  router.put('/pickup_time', (req, res) => {
+    const { orderId, pickupTime } = req.body;
+
+    db.updatePickupTime(orderId, pickupTime)
+    .then(result => res.send(result))
+    .catch(err => console.error(err));
+  });
+
+  router.put('/complete', (req, res) => {
+    const { orderId } = req.body;
+
+    db.completeOrderOnDB(orderId)
+    .then(result => res.send(result))
+    .catch(err => console.error(err));
+  });
+
   router.get('/:id', (req, res) => {
     db.getOrderDetails(req.params.id)
     .then(details => {

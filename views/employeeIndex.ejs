@@ -8,7 +8,7 @@
     <div class="incoming-orders">
 
       <% for (let order in newOrders) { %>
-        <div class="order-card">
+        <div class="order-card card-order-<%= order %>">
           <div class="order-information">
             <h4 class="order-num"><a href="/orders/<%= order %>" target="_blank">#<%= order %></a></h4>
             <h4 class="order-time"><%= newOrders[order].time_created %></h4>
@@ -19,7 +19,7 @@
               <h4 class="item-name"><%= item %></h4>
             </div>
           <% } %>
-          <div class="message"><%= newOrders[order].message %></div>
+          <div class="message"><%= newOrders[order].message ? '*' + newOrders[order].message : '' %></div>
           <div class="add-pickup-time-buttons">
             <ul>
               <li class="add-pickup-time newOrder-<%= order %>">15</li>
@@ -34,7 +34,7 @@
 
     <div class="processed-orders">
       <% for (let order in oldOrders) { %>
-        <div class="order-card oldOrder-<%= order %>">
+        <div class="order-card  card-order-<%= order %>">
           <div class="order-information">
             <h4 class="order-num"><a href="/orders/<%= order %>" target="_blank">#<%= order %></a></h4>
             <h4 class="order-time"><%= oldOrders[order].time_created %></h4>
@@ -47,8 +47,8 @@
             </div>
           <% } %>
           
-          <div class="message"><%= oldOrders[order].message %></div>
-          <div class="pickup-time"><%= oldOrders[order].estimated_pickup %></div>
+          <div class="message"><%= oldOrders[order].message ? '*' + oldOrders[order].message : ''  %></div>
+          <div class="pickup-time oldOrder-<%= order %>"><%= oldOrders[order].estimated_pickup %></div>
         </div>
       <% } %>
     </div>

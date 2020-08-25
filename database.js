@@ -167,7 +167,7 @@ const getProcessedOrders = () => {
   WHERE orders.id IN (
     SELECT id 
     FROM orders 
-    WHERE estimated_pickup IS NOT NULL
+    WHERE estimated_pickup IS NOT NULL AND completed = 'false'
   );`;
 
   return db.query(queryString)
@@ -175,3 +175,31 @@ const getProcessedOrders = () => {
   .catch(e => console.error(e));
 };
 exports.getProcessedOrders = getProcessedOrders
+
+const updatePickupTime = (orderId, pickupTime) => {
+  const queryString = `
+  UPDATE orders
+  SET estimated_pickup=$1
+  WHERE id=$2;`;
+
+  const values = [pickupTime, orderId];
+
+  return db.query(queryString, values)
+  .then(updatedOrder => updatedOrder.rows)
+  .catch(e => console.error(e));
+};
+exports.updatePickupTime = updatePickupTime;
+
+const completeOrderOnDB = (orderId) => {
+  const queryString = `
+  UPDATE orders
+  SET completed='true'
+  WHERE id=$1`;
+
+  const values = [orderId];
+
+  return db.query(queryString, values)
+  .then(completedOrder => completedOrder.rows)
+  .catch(e => console.error(e));
+};
+exports.completeOrderOnDB = completeOrderOnDB;

@@ -32,7 +32,8 @@ CREATE TABLE orders (
   client_id INTEGER REFERENCES clients(id) ON DELETE CASCADE,
   message TEXT,
   time_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  estimated_pickup TEXT
+  estimated_pickup TEXT,
+  completed BOOLEAN DEFAULT 'false'
 );
 
 

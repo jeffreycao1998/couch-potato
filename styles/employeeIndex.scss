@@ -15,15 +15,17 @@
     border-radius: 4px;
     padding: 20px;
     overflow-y: auto;
+    column-count: 4;
 
     .order-card {
       border: 1px solid $colorRed;
       border-radius: 4px;
       width: 200px;
       box-shadow: 2px 2px 10px rgb(211, 211, 211);
-      margin: 2px;
+      margin: 5px 0;
       float: left;
       background-color: rgb(255, 255, 255);
+      break-inside: avoid;
 
       .order-information {
         display: flex;
@@ -101,15 +103,17 @@
     border-radius: 4px;
     padding: 20px;
     overflow-y: auto;
+    column-count: 4;
 
     .order-card {
       border: 1px solid $colorGreen;
       border-radius: 4px;
       width: 200px;
       box-shadow: 2px 2px 10px rgb(211, 211, 211);
-      margin: 2px;
+      margin: 5px 0;
       float: left;
       background-color: rgb(255, 255, 255);
+      break-inside: avoid;
 
       .order-information {
         display: flex;

@@ -77,6 +77,5 @@ module.exports = (db) => {
     res.redirect('/employee/');
   });
 
-
   return router;
 };
