@@ -120,3 +120,21 @@ const findClient = function(name, mobile) {
   .catch(e => console.error(e.stack));
 }
 exports.findClient = findClient;
+
+const getOrderDetails = (order_id) => {
+  const queryString = `
+  SELECT order_items.quantity as quantity, menu_items.name as itemname, order_items.price as price, menu_items.photo_url as photourl, orders.estimated_pickup as pickuptime, orders.message,
+  clients.name, clients.mobile
+  FROM order_items 
+  JOIN menu_items ON menu_item_id = menu_items.id
+  JOIN orders ON order_id = orders.id
+  JOIN clients ON orders.client_id = clients.id
+  WHERE order_id = $1;`
+
+  const values = [order_id];
+
+  return db.query(queryString, values)
+  .then(res => res.rows)
+  .catch(e => console.error(e));
+};
+exports.getOrderDetails = getOrderDetails;
