@@ -34,6 +34,16 @@ const getMenuItemsByCategory = function(category_id) {
 exports.getMenuItemsByCategory = getMenuItemsByCategory;
 
 
+const addItemToMenu = function(category_id, name, price, phot_url, description) {
+  return db.query(`
+  INSERT INTO menu_items (category_id, name, price, photo_url, description)
+  RETURNING *
+  `, [category_id, name, price, phot_url, description])
+  .then(res => res.rows[0])
+  .catch(e => console.error(e.stack));
+}
+exports.addItemToMenu = addItemToMenu;
+
 // Orders
 /***
  * Create an order in the database
@@ -125,7 +135,7 @@ const getOrderDetails = (order_id) => {
   const queryString = `
   SELECT order_items.quantity as quantity, menu_items.name as itemname, order_items.price as price, menu_items.photo_url as photourl, orders.estimated_pickup as pickuptime, orders.message,
   clients.name, clients.mobile
-  FROM order_items 
+  FROM order_items
   JOIN menu_items ON menu_item_id = menu_items.id
   JOIN orders ON order_id = orders.id
   JOIN clients ON orders.client_id = clients.id
@@ -141,13 +151,13 @@ exports.getOrderDetails = getOrderDetails;
 
 const getIncomingOrders = () => {
   const queryString = `
-  SELECT orders.id as orderid, orders.message as message, time_created, menu_items.name as itemname, order_items.quantity as itemquantity 
-  FROM orders 
+  SELECT orders.id as orderid, orders.message as message, time_created, menu_items.name as itemname, order_items.quantity as itemquantity
+  FROM orders
   JOIN order_items ON orders.id=order_items.order_id
   JOIN menu_items ON order_items.menu_item_id=menu_items.id
   WHERE orders.id IN (
-    SELECT id 
-    FROM orders 
+    SELECT id
+    FROM orders
     WHERE estimated_pickup IS NULL
   );`;
 
@@ -160,13 +170,13 @@ exports.getIncomingOrders = getIncomingOrders;
 const getProcessedOrders = () => {
   const queryString = `
   SELECT orders.id as orderid, orders.message as message, time_created, estimated_pickup, menu_items.name as itemname, order_items.quantity as itemquantity
-  FROM orders 
+  FROM orders
   JOIN order_items ON orders.id=order_items.order_id
   JOIN menu_items ON order_items.menu_item_id=menu_items.id
   JOIN clients ON client_id=clients.id
   WHERE orders.id IN (
-    SELECT id 
-    FROM orders 
+    SELECT id
+    FROM orders
     WHERE estimated_pickup IS NOT NULL AND completed = 'false'
   );`;
 

@@ -1,11 +1,11 @@
-#checkout-page {
+#edit-menu-page {
   margin-top: 51px;
   width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
 
-  .checkout-banner {
+  .edit-menu-banner {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,9 +32,8 @@
     }
   }
 
-  .error-message-checkout {
+  .error-message-edit-menu {
     width: 500px;
-    max-width: calc(100% - 30px);
     border: 1px solid red;
     border-radius: 4px;
     color: red;
@@ -46,7 +45,6 @@
 
   .form-title {
     margin-top: 10px;
-    max-width: calc(100% - 30px);
     color: rgb(70, 70, 70);
     width: 500px;
     text-align: center;
@@ -55,7 +53,7 @@
 
     &::before {
       content: '';
-      width: calc(50% - 145px);
+      width: 80px;
       border-bottom: 1px solid rgb(160, 160, 160);
       position: absolute;
       left: 0;
@@ -64,7 +62,7 @@
 
     &::after {
       content: '';
-      width: calc(50% - 145px);
+      width: 80px;
       border-bottom: 1px solid rgb(160, 160, 160);
       position: absolute;
       right: 0;
@@ -72,9 +70,8 @@
     }
   }
 
-  .checkout-form {
+  .add-menu-item-form {
     width: 500px;
-    max-width: calc(100% - 30px);
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -118,62 +115,31 @@
       }
     }
 
-    .firstname {
+    .item-name {
       width: 49%;
       margin-right: 2%;
     }
 
-    .lastname {
+    .category {
       width: 49%;
     }
   }
 
-  .extra-details-title {
-    max-width: calc(100% - 30px);
+  .description {
     margin-top: 10px;
     color: rgb(70, 70, 70);
     width: 500px;
+    height: 100px;
     text-align: center;
     font-size: 16px;
     position: relative;
-
-    &::before {
-      content: '';
-      width: calc(50% - 155px);
-      border-bottom: 1px solid rgb(160, 160, 160);
-      position: absolute;
-      left: 0;
-      top: 50%;
-    }
-
-    &::after {
-      content: '';
-      width: calc(50% - 155px);
-      border-bottom: 1px solid rgb(160, 160, 160);
-      position: absolute;
-      right: 0;
-      top: 50%;
-    }
   }
 
-  #extra-details {
-    width: 500px;
-    max-width: calc(100% - 30px);
-    resize: none;
-    overflow-y: auto;
-    height: 80px;
-    margin-top: 10px;
-    border: 2px solid rgb(70, 70, 70);
-    border-radius: 2px;
-    padding: 5px;
-  }
-
-  .place-order-button {
+  .submit-button {
     background-color: $colorGreen;
     transition: background-color 0.2s ease-in-out;
     border: none;
     color: white;
-    max-width: calc(100% - 30px);
     width: 500px;
     height: 35px;
     border-radius: 4px;
@@ -186,24 +152,7 @@
       background-color: $colorGreenHover;
     }
 
-    &:active {
-      outline: none;
-    }
 
-    .total-cost {
-      position: absolute;
-      top: 50%;
-      right: 15px;
-      transform: translateY(-50%);
-    }
-  }
-
-  .disclaimer {
-    max-width: calc(100% - 30px);
-    width: 500px;
-    font-size: 14px;
-    color: rgb(146, 146, 146);
-    margin-top: 5px;
-    text-align: left;
   }
 }
+

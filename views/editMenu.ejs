@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include partials/_head %>
+<%- include('partials/_employeeHeader', {}) %>
+<body>
+
+  <section id="edit-menu-page">
+    <div class="edit-menu-banner">
+      <h2>ADD AN ITEM TO THE MENU</h2>
+    </div>
+
+    <div class="error-message-edit-menu">
+      Wrong something!
+    </div>
+
+    <div class="form-title">Please enter the details for the new product</div>
+
+
+      <form method="POST" action="/api/menu/new" class="add-menu-item-form">
+        <div class="item-name">
+          <input type="text" id="item-name" name="item-name" placeholder=" " required>
+          <label for="item-name">Title</label>
+        </div>
+
+        <div class="category">
+          <input list="categories" id="item-category" name="item-category" placeholder=" " required>
+          <label for="item-category">Category</label>
+          <datalist id="categories">
+            <option value="Raw">1</option>
+            <option value="Baked">2</option>
+            <option value="Fried">3</option>
+            <option value="Pan Fried">4</option>
+            <option value="Dessert">5</option>
+          </datalist>
+        </div>
+
+        <div class="price">
+          <input type="text" id="price" placeholder=" " required>
+          <label for="price">Price</label>
+        </div>
+
+        <div class="form-row">
+          <input type="text" id="photo_url" placeholder=" ">
+          <label for="photo_url">Photo URL</label>
+        </div>
+
+        <div class="description" id="description">
+          <input type="text" id="description" placeholder=" " required>
+          <label for="description">Description</label>
+        </div>
+
+        <button class="submit-button"type="button">Submit</button>
+      </form>
+
+
+
+
+
+  </section>
+</body>
+<%- include partials/_footer %>
+</html>
