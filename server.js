@@ -18,16 +18,22 @@ const employeeRoute = require("./routes/employee");
 
 const io = require('socket.io')(server);
 
-let ownerSocket;
+let ownerSocket = null;
 
 io.on('connection', socket => {
   socket.on('owner connected', () => {
-    console.log('owner connected');
+    ownerSocket = socket.id;
   });
 
-  socket.on('order placed', () => {
+  socket.on('order placed', (data) => {
     console.log('order placed');
-    console.log(socket.id);
+    io.to(ownerSocket).emit('order placed', data)
+  });
+
+  socket.on('disconnect', () => {
+    if (socket.id === ownerSocket) {
+      ownerSocket = null;
+    }
   });
 });
 

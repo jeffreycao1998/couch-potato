@@ -53,7 +53,7 @@ module.exports = (db, io) => {
               order,
               total
             }
-            return res.end();
+            return res.send(JSON.stringify({ order, cart }));
           });
         });
       } else {
@@ -73,7 +73,7 @@ module.exports = (db, io) => {
             order,
             total,
           }
-          return res.end();
+          return res.send(JSON.stringify({ order, cart }));
         });
       }
     });
