@@ -138,3 +138,68 @@ const getOrderDetails = (order_id) => {
   .catch(e => console.error(e));
 };
 exports.getOrderDetails = getOrderDetails;
+
+const getIncomingOrders = () => {
+  const queryString = `
+  SELECT orders.id as orderid, orders.message as message, time_created, menu_items.name as itemname, order_items.quantity as itemquantity 
+  FROM orders 
+  JOIN order_items ON orders.id=order_items.order_id
+  JOIN menu_items ON order_items.menu_item_id=menu_items.id
+  WHERE orders.id IN (
+    SELECT id 
+    FROM orders 
+    WHERE estimated_pickup IS NULL
+  );`;
+
+  return db.query(queryString)
+  .then(orders => orders.rows)
+  .catch(e => console.error(e));
+};
+exports.getIncomingOrders = getIncomingOrders;
+
+const getProcessedOrders = () => {
+  const queryString = `
+  SELECT orders.id as orderid, orders.message as message, time_created, estimated_pickup, menu_items.name as itemname, order_items.quantity as itemquantity
+  FROM orders 
+  JOIN order_items ON orders.id=order_items.order_id
+  JOIN menu_items ON order_items.menu_item_id=menu_items.id
+  JOIN clients ON client_id=clients.id
+  WHERE orders.id IN (
+    SELECT id 
+    FROM orders 
+    WHERE estimated_pickup IS NOT NULL AND completed = 'false'
+  );`;
+
+  return db.query(queryString)
+  .then(orders => orders.rows)
+  .catch(e => console.error(e));
+};
+exports.getProcessedOrders = getProcessedOrders
+
+const updatePickupTime = (orderId, pickupTime) => {
+  const queryString = `
+  UPDATE orders
+  SET estimated_pickup=$1
+  WHERE id=$2;`;
+
+  const values = [pickupTime, orderId];
+
+  return db.query(queryString, values)
+  .then(updatedOrder => updatedOrder.rows)
+  .catch(e => console.error(e));
+};
+exports.updatePickupTime = updatePickupTime;
+
+const completeOrderOnDB = (orderId) => {
+  const queryString = `
+  UPDATE orders
+  SET completed='true'
+  WHERE id=$1`;
+
+  const values = [orderId];
+
+  return db.query(queryString, values)
+  .then(completedOrder => completedOrder.rows)
+  .catch(e => console.error(e));
+};
+exports.completeOrderOnDB = completeOrderOnDB;

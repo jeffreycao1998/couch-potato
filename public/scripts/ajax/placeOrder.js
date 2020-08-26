@@ -19,7 +19,7 @@ $(document).ready(() => {
     const firstname = $('#firstname').val();
     const lastname = $('#lastname').val();
     const mobile = $('#mobile').val();
-    const message = $('#message').val();
+    const message = $('#extra-details').val();
     const cart = JSON.parse(Cookies.get('cart'));
 
     let errorMessage = checkFormValues(firstname, lastname, mobile);
@@ -39,6 +39,10 @@ $(document).ready(() => {
         },
       }).then(res => {
         Cookies.set('cart', JSON.stringify({}));
+        socket = io.connect('http://localhost:8080');
+        socket.on('connect', () => {
+          socket.emit('order placed');
+        });
         window.location.assign('/orders/confirmation');
       });
     } else {

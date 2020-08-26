@@ -10,9 +10,6 @@ const getDistanceFromStore = (userCoordinates) => {
     $('.user-location').css('display', 'flex');
     $('.location-distance').text(`${distance.text}`);
     $('.location-drivingtime').text(`Driving: ${duration.text}`);
-
-    // don't remove, don't use the api if not working on it!
-    console.log('comment out getUsersLocation() in scripts/app.js');
   });
 
 };

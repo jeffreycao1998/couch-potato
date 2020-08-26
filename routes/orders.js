@@ -4,12 +4,15 @@ const { sendSMS } = require('../server_scripts/sendSMS');
 
 let confirmationData;
 
-module.exports = (db) => {
+module.exports = (db, io) => {
   router.get("/checkout", (req, res) => {
     res.render('checkout');
   });
 
   router.get('/confirmation', (req, res) => {
+    if (!confirmationData) {
+      return res.redirect('/');
+    }
     const {client, order, total} = confirmationData;
 
     console.log(order.id);
@@ -26,6 +29,8 @@ module.exports = (db) => {
   router.post("/place_order", (req, res) => {
     const { name, mobile, message } = req.body;
     const cart = JSON.parse(req.body.cart);
+
+    // console.log(message);
 
     db.findClient(name, mobile)
     .then(client => {
@@ -74,6 +79,22 @@ module.exports = (db) => {
     });
   });
 
+  router.put('/pickup_time', (req, res) => {
+    const { orderId, pickupTime } = req.body;
+
+    db.updatePickupTime(orderId, pickupTime)
+    .then(result => res.end())
+    .catch(err => console.error(err));
+  });
+
+  router.put('/complete', (req, res) => {
+    const { orderId } = req.body;
+
+    db.completeOrderOnDB(orderId)
+    .then(result => res.end())
+    .catch(err => console.error(err));
+  });
+
   router.get('/:id', (req, res) => {
     db.getOrderDetails(req.params.id)
     .then(details => {
@@ -103,14 +124,15 @@ module.exports = (db) => {
         prices,
         pickupTime,
         orderId: req.params.id,
-        subtotal: prices.reduce((total, price) => total + Number(price), 0),
+        subtotal: (prices.reduce((total, price) => total + Number(price), 0)).toFixed(2),
       }
 
       data.tax = (data.subtotal * 0.13).toFixed(2);
       data.total = (Math.round((data.subtotal * 1.13).toFixed(2)/0.05) * 0.05).toFixed(2);
 
       res.render('order', data);
-    });
+    })
+    .catch((err) => res.send('invalid order number'));
   });
   
   return router;
