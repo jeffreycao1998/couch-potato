@@ -4,7 +4,6 @@ const completeOrder = (orderId) => {
     method: 'PUT',
     data: { orderId },
   })
-  .then(res => console.log(res))
   .catch(err => console.error(err));
 };
 

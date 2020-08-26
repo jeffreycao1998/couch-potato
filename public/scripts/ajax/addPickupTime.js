@@ -4,7 +4,6 @@ const addPickupTime = (orderId, pickupTime) => {
     method: 'PUT',
     data: { orderId, pickupTime },
   })
-  .then(res => console.log(res))
   .catch(err => console.error(err));
 };
 

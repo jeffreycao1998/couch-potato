@@ -18,10 +18,16 @@ const employeeRoute = require("./routes/employee");
 
 const io = require('socket.io')(server);
 
+let ownerSocket;
+
 io.on('connection', socket => {
-  console.log('Socket connected');
-  socket.on('join', (data) => {
-    console.log(data);
+  socket.on('owner connected', () => {
+    console.log('owner connected');
+  });
+
+  socket.on('order placed', () => {
+    console.log('order placed');
+    console.log(socket.id);
   });
 });
 
@@ -46,14 +52,14 @@ app.use(cookieSession({
   keys: ['blahblah'],
 }));
 
-app.use("/api", apiRoutes(db));
-app.use("/orders", ordersRoutes(db));
-app.use("/employee", employeeRoute(db));
+app.use("/api", apiRoutes(db, io));
+app.use("/orders", ordersRoutes(db, io));
+app.use("/employee", employeeRoute(db, io));
 
 app.get("/", (req, res) => {
   res.render("index");
 });
 
 server.listen(PORT, () => {
-  console.log('Sockets running on port 4200');
+  console.log(`Server listing on port ${PORT}`);
 });

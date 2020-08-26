@@ -1,5 +1,7 @@
-const socket = io.connect('http://localhost:8080');
 
-socket.on('connect', (data) => {
-  socket.emit('join', 'Hello Worl from client');
-});
+if (window.location.pathname === '/employee') {
+  socket = io.connect('http://localhost:8080');
+  socket.on('connect', () => {
+    socket.emit('owner connected');
+  });
+}

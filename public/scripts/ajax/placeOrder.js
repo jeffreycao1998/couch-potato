@@ -22,8 +22,6 @@ $(document).ready(() => {
     const message = $('#extra-details').val();
     const cart = JSON.parse(Cookies.get('cart'));
 
-    console.log('message: ', message);
-
     let errorMessage = checkFormValues(firstname, lastname, mobile);
     if (Object.keys(cart).length === 0) {
       errorMessage += "Your cart is empty. <br>";
@@ -41,6 +39,10 @@ $(document).ready(() => {
         },
       }).then(res => {
         Cookies.set('cart', JSON.stringify({}));
+        socket = io.connect('http://localhost:8080');
+        socket.on('connect', () => {
+          socket.emit('order placed');
+        });
         window.location.assign('/orders/confirmation');
       });
     } else {

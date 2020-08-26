@@ -2,7 +2,7 @@ const express = require('express');
 const router  = express.Router();
 const { getDistanceFromLocation } = require('../server_scripts/axios');
 
-module.exports = (db) => {
+module.exports = (db, io) => {
   router.post("/distanceFromStore", (req, res) => {
     getDistanceFromLocation(req.body.userCoordinates, (result) => {
       res.send(JSON.stringify(result[0]));

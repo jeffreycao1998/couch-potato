@@ -4,12 +4,15 @@ const { sendSMS } = require('../server_scripts/sendSMS');
 
 let confirmationData;
 
-module.exports = (db) => {
+module.exports = (db, io) => {
   router.get("/checkout", (req, res) => {
     res.render('checkout');
   });
 
   router.get('/confirmation', (req, res) => {
+    if (!confirmationData) {
+      return res.redirect('/');
+    }
     const {client, order, total} = confirmationData;
 
     console.log(order.id);
@@ -80,7 +83,7 @@ module.exports = (db) => {
     const { orderId, pickupTime } = req.body;
 
     db.updatePickupTime(orderId, pickupTime)
-    .then(result => res.send(result))
+    .then(result => res.end())
     .catch(err => console.error(err));
   });
 
@@ -88,7 +91,7 @@ module.exports = (db) => {
     const { orderId } = req.body;
 
     db.completeOrderOnDB(orderId)
-    .then(result => res.send(result))
+    .then(result => res.end())
     .catch(err => console.error(err));
   });
 
@@ -121,7 +124,7 @@ module.exports = (db) => {
         prices,
         pickupTime,
         orderId: req.params.id,
-        subtotal: prices.reduce((total, price) => total + Number(price), 0),
+        subtotal: (prices.reduce((total, price) => total + Number(price), 0)).toFixed(2),
       }
 
       data.tax = (data.subtotal * 0.13).toFixed(2);

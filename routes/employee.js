@@ -3,7 +3,7 @@ const router  = express.Router();
 const cookieSession = require('cookie-session');
 const { getHourMinute } = require('../server_scripts/getHourMinute')
 
-module.exports = (db) => {
+module.exports = (db, io) => {
   router.get('/login', (req, res) => {
     res.render('employeeLogin');
   });
@@ -46,6 +46,15 @@ module.exports = (db) => {
             message: item.message,
             time_created: getHourMinute(item.time_created),
           }
+
+          let hour = oldOrders[item.orderid].estimated_pickup.slice(0,2);
+          const minute = oldOrders[item.orderid].estimated_pickup.slice(3,5);
+          const ampm = oldOrders[item.orderid].estimated_pickup.slice(5,7);
+          if (ampm === 'pm') {
+            hour = Number(hour) + 12;
+          }
+
+          oldOrders[item.orderid].estimated_pickup = `${hour}:${minute}`;
         })
 
         result.forEach(item => {
