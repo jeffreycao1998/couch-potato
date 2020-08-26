@@ -1,3 +1,4 @@
+var stripe = Stripe('pk_test_51HKTW1HDGiMZIx1LWKdRMymMpkDqeOetgBL2Bvfbqo7bsFc5kL3rjfX2ejnd3b0NrCCwpl3gcyMXgdYPdTqsiLuw00uiItPIei');
 const errorTimeouts = [];
 
 const resetTimeout = () => {
@@ -20,6 +21,7 @@ $(document).ready(() => {
     const lastname = $('#lastname').val();
     const mobile = $('#mobile').val();
     const message = $('#extra-details').val();
+    const paymentMethod = $('input[name="pay-method"]:checked').val();
     const cart = JSON.parse(Cookies.get('cart'));
 
     let errorMessage = checkFormValues(firstname, lastname, mobile);
@@ -43,7 +45,34 @@ $(document).ready(() => {
         socket.on('connect', () => {
           socket.emit('order placed', res);
         });
-        window.location.assign('/orders/confirmation');
+
+        if (paymentMethod === 'card') {
+          fetch('/create-checkout-session', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(cart),
+          })
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(session) {
+            return stripe.redirectToCheckout({ sessionId: session.id });
+          })
+          .then(function(result) {
+            if (result.error) {
+              alert(result.error.message);
+            } else {
+              window.location.assign('/orders/confirmation');
+            }
+          })
+          .catch(function(error) {
+            console.error('Error:', error);
+          });
+        } else {
+          window.location.assign('/orders/confirmation');
+        }
       });
     } else {
       $('.error-message-checkout').html(errorMessage);

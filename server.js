@@ -10,6 +10,7 @@ const morgan        = require('morgan');
 const cors          = require('cors');
 const db            = require('./database');
 const cookieSession = require('cookie-session');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // Routes
 const apiRoutes    = require("./routes/api");
@@ -64,6 +65,35 @@ app.use("/employee", employeeRoute(db, io));
 
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+app.post("/create-checkout-session", async (req, res) => {
+  const items = req.body;
+
+  const products = [];
+
+  for (let item in items) {
+    products.push({
+      price_data: {
+        currency: 'cad',
+        product_data: {
+          name: items[item].name,
+        },
+        unit_amount: items[item].price,
+      },
+      quantity: items[item].quantity
+    })
+  }
+
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ["card"],
+    line_items: [...products],
+    mode: "payment",
+    success_url: "http://localhost:8080/orders/confirmation",
+    cancel_url: "http://localhost:8080/orders/checkout",
+  });
+
+  res.json({ id: session.id });
 });
 
 server.listen(PORT, () => {

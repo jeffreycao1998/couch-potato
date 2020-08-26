@@ -31,11 +31,21 @@
     <div class="extra-details-title">Any extra details we should know about?</div>
     <textarea id="extra-details" type="area"></textarea>
 
+    <div class="payment-method">
+      <div class="inputGroup">
+        <input id="pay-cash" name="pay-method" value="cash" type="radio"/>
+        <label for="pay-cash">Cash</label>
+      </div>
+      <div class="inputGroup">
+        <input id="pay-card" name="pay-method" value="card" type="radio"/>
+        <label for="pay-card">Card</label>
+      </div>
+    </div>
+
     <button class="place-order-button" type="button">
       Place your order
       <div class="total-cost">$24.84</div>
     </button>
-    <p class="disclaimer">cash 10% off</p>
   </section>
 
   <%- include('partials/_cart', {}) %>
