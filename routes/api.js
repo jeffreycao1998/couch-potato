@@ -18,9 +18,15 @@ module.exports = (db, io) => {
     })
   });
 
-  // router.post('/menu/new', (req, res) => {
-  //   res.send(req.body);
-  // })
+  router.post('/menu/new', (req, res) => {
+    const { name, category, price, photo_url, description } = req.body;
+    db.addItemToMenu(name, category, price, photo_url, description)
+    .then( res.redirect('/employee/editmenu/'))
+    .catch(e => {
+      console.error(e);
+      res.send(e)
+  })
+  })
 
 
 

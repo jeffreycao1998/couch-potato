@@ -34,11 +34,12 @@ const getMenuItemsByCategory = function(category_id) {
 exports.getMenuItemsByCategory = getMenuItemsByCategory;
 
 
-const addItemToMenu = function(category_id, name, price, phot_url, description) {
+const addItemToMenu = function(name, category_id, price, phot_url, description) {
   return db.query(`
-  INSERT INTO menu_items (category_id, name, price, photo_url, description)
+  INSERT INTO menu_items (name, category_id, price, photo_url, description)
+  VALUES ($1, $2, $3, $4, $5)
   RETURNING *
-  `, [category_id, name, price, phot_url, description])
+  `, [name, category_id, price*100, phot_url, description])
   .then(res => res.rows[0])
   .catch(e => console.error(e.stack));
 }

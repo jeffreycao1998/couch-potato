@@ -18,38 +18,38 @@
 
       <form method="POST" action="/api/menu/new" class="add-menu-item-form">
         <div class="item-name">
-          <input type="text" id="item-name" name="item-name" placeholder=" " required>
+          <input type="text" id="item-name" name="name" placeholder=" " required>
           <label for="item-name">Title</label>
         </div>
 
         <div class="category">
-          <input list="categories" id="item-category" name="item-category" placeholder=" " required>
+          <input list="categories" id="item-category" name="category" placeholder=" " required>
           <label for="item-category">Category</label>
           <datalist id="categories">
-            <option value="Raw">1</option>
-            <option value="Baked">2</option>
-            <option value="Fried">3</option>
-            <option value="Pan Fried">4</option>
-            <option value="Dessert">5</option>
+            <option value="1">Raw</option>
+            <option value="2">Baked</option>
+            <option value="3">Fried</option>
+            <option value="4">Pan Fried</option>
+            <option value="5">Dessert</option>
           </datalist>
         </div>
 
         <div class="price">
-          <input type="text" id="price" placeholder=" " required>
+          <input type="text" id="price" name="price" placeholder=" " required>
           <label for="price">Price</label>
         </div>
 
         <div class="form-row">
-          <input type="text" id="photo_url" placeholder=" ">
+          <input type="text" id="photo_url" name="photo_url" placeholder=" ">
           <label for="photo_url">Photo URL</label>
         </div>
 
         <div class="description" id="description">
-          <input type="text" id="description" placeholder=" " required>
+          <input type="text" id="description" placeholder=" " name="description" required>
           <label for="description">Description</label>
         </div>
 
-        <button class="submit-button"type="button">Submit</button>
+        <button class="submit-button"type="submit">Submit</button>
       </form>
 
 
