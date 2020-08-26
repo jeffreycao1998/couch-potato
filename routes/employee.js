@@ -16,7 +16,7 @@ module.exports = (db, io) => {
     if (!employee) {
       return res.redirect('/employee/login');
     }
-  
+
     db.getIncomingOrders()
     .then(result => {
       result.forEach(item => {
@@ -85,6 +85,11 @@ module.exports = (db, io) => {
     }
     res.redirect('/employee/');
   });
+
+
+  router.get('/editmenu', (req, res) => {
+    res.render('editMenu')
+  })
 
   return router;
 };

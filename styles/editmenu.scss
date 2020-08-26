@@ -1,11 +1,11 @@
-#checkout-page {
+#edit-menu-page {
   margin-top: 51px;
   width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
 
-  .checkout-banner {
+  .edit-menu-banner {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,7 +32,7 @@
     }
   }
 
-  .error-message-checkout {
+  .error-message-edit-menu {
     width: 500px;
     border: 1px solid red;
     border-radius: 4px;
@@ -53,7 +53,7 @@
 
     &::before {
       content: '';
-      width: 105px;
+      width: 80px;
       border-bottom: 1px solid rgb(160, 160, 160);
       position: absolute;
       left: 0;
@@ -62,7 +62,7 @@
 
     &::after {
       content: '';
-      width: 105px;
+      width: 80px;
       border-bottom: 1px solid rgb(160, 160, 160);
       position: absolute;
       right: 0;
@@ -70,7 +70,7 @@
     }
   }
 
-  .checkout-form {
+  .add-menu-item-form {
     width: 500px;
     display: flex;
     justify-content: center;
@@ -115,55 +115,29 @@
       }
     }
 
-    .firstname {
+    .item-name {
       width: 49%;
       margin-right: 2%;
     }
 
-    .lastname {
+    .category {
       width: 49%;
     }
   }
 
-  .extra-details-title {
+  .description {
     margin-top: 10px;
     color: rgb(70, 70, 70);
     width: 500px;
+    height: 100px;
     text-align: center;
     font-size: 16px;
     position: relative;
-
-    &::before {
-      content: '';
-      width: 95px;
-      border-bottom: 1px solid rgb(160, 160, 160);
-      position: absolute;
-      left: 0;
-      top: 50%;
-    }
-
-    &::after {
-      content: '';
-      width: 95px;
-      border-bottom: 1px solid rgb(160, 160, 160);
-      position: absolute;
-      right: 0;
-      top: 50%;
-    }
   }
 
-  #extra-details {
-    width: 500px;
-    resize: none;
-    overflow-y: auto;
-    height: 80px;
-    margin-top: 10px;
-    border: 2px solid rgb(70, 70, 70);
-    border-radius: 2px;
-    padding: 5px;
-  }
 
-  .place-order-button {
+
+  .submit-button {
     background-color: $colorGreen;
     transition: background-color 0.2s ease-in-out;
     border: none;
@@ -180,23 +154,7 @@
       background-color: $colorGreenHover;
     }
 
-    &:active {
-      outline: none;
-    }
 
-    .total-cost {
-      position: absolute;
-      top: 50%;
-      right: 15px;
-      transform: translateY(-50%);
-    }
-  }
-
-  .disclaimer {
-    width: 500px;
-    font-size: 14px;
-    color: rgb(146, 146, 146);
-    margin-top: 5px;
-    text-align: left;
   }
 }
+
