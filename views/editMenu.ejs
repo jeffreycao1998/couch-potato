@@ -16,15 +16,22 @@
     <div class="form-title">Please enter the details for the new product</div>
 
 
-      <form action="/api/add_menu_item" method="POST" class="add-menu-item-form">
+      <form method="POST" action="/api/menu/new" class="add-menu-item-form">
         <div class="item-name">
           <input type="text" id="item-name" name="item-name" placeholder=" " required>
           <label for="item-name">Title</label>
         </div>
 
         <div class="category">
-          <input type="text" id="item-category" name="item-category" placeholder=" " required>
+          <input list="categories" id="item-category" name="item-category" placeholder=" " required>
           <label for="item-category">Category</label>
+          <datalist id="categories">
+            <option value="Raw">1</option>
+            <option value="Baked">2</option>
+            <option value="Fried">3</option>
+            <option value="Pan Fried">4</option>
+            <option value="Dessert">5</option>
+          </datalist>
         </div>
 
         <div class="price">
@@ -43,8 +50,6 @@
         </div>
 
         <button class="submit-button"type="button">Submit</button>
-
-
       </form>
 
 
