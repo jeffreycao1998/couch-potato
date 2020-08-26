@@ -13,17 +13,8 @@ module.exports = (db, io) => {
     if (!confirmationData) {
       return res.redirect('/');
     }
-    const {client, order, total} = confirmationData;
 
-    console.log(order.id);
-
-    const data = {
-      total: (total / 100).toFixed(2),
-      mobile: client.mobile,
-      orderNumber: order.id
-    }
-
-    res.render('confirmation', data);
+    res.render('confirmation');
   });
 
   router.post("/place_order", (req, res) => {

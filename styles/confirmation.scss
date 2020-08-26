@@ -9,6 +9,7 @@
 
   .confirmation-page-container {
     max-width: calc(100% - 30px);
+    max-height: calc(100% - 150px);
     width: 600px;
     background-color: white;
     position:absolute;
@@ -31,19 +32,11 @@
       margin: 15px 0;
     }
 
-    .order-details {
-      width: 100%;
-      padding: 20px 80px;
-
-      & > * {
-        margin-bottom: 20px;
-      }
-    }
-
     .google-map {
       padding-bottom: 20px;
       width: calc(100% - 40px);
-      height: 50vw;
+      height: calc(100vh - 150px);
+      max-height: 400px;
 
       iframe {
         width: 100%;
