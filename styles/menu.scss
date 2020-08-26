@@ -25,14 +25,10 @@
     clear: left;
 
     .main-page-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      max-width: 520px;
+      width: calc(100vw - 220px);
+      height: calc(100vh - 154px);
+      max-width: 720px;
       max-height: 754px;
-      width: calc(100% - 20px);
-      height: calc(100% - 20px);
 
       .find-order-details {
         display: flex;
@@ -46,6 +42,7 @@
         p {
           font-weight: 600;
           margin-left: 5px;
+          margin-bottom: 5px;
           font-size: 20px;
         }
 
@@ -69,6 +66,7 @@
           border-radius: 4px;
           font-weight: 600;
           color: white;
+          max-width: calc(100%);
 
           &:hover {
             background-color: $colorGreenHover;
@@ -91,6 +89,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        height: calc(100% - 154px);
 
         h1 {
           text-align: center;

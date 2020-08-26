@@ -28,27 +28,17 @@ nav {
       font-weight: 400;
       font-size: 25px;
       user-select: none;
+      line-height: 32px;
 
       &:hover {
         background-color: $colorRed;
         color: white;
         cursor: pointer;
       }
-
-      @media screen and (max-width: $phone-width) {
-        width: 50%;
-        display: none;
-        text-align: center;
-      }
-
-      @media screen and (min-width: $phone-width) {
-        display: flex;
-      }
     }
     @media screen and (max-width: $phone-width) {
       flex-direction: column;
       align-items: center;
-
     }
 
     .menu-icon {

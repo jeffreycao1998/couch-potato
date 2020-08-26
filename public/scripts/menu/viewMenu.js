@@ -25,7 +25,6 @@ const addMenuItems = (menuItems) => {
 
 $(document).ready(() => {
 
-
   //on click of the menu item, load menu
   $('.menu-tab').on('click', () => {
     let classClicked =  event.target.className;
@@ -53,6 +52,7 @@ $(document).ready(() => {
   $(window).resize(() => {
     if ($(window).width() > 480) {
       $('.menu-tab').show();
+      $('.menu-tab').css('display', 'flex');
     } else {
       $('.menu-tab').hide();
     }
