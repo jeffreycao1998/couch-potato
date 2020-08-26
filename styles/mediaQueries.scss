@@ -12,7 +12,7 @@
       }
 
       .open-cart-header {
-        // display: none;
+        display: none;
       }
     }
   }
@@ -73,5 +73,126 @@
 
   footer {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #header {
+    .header-banner {
+      width: 100%;
+
+      .company-name {
+        margin-left: 10px;
+      }
+
+      .user-location {
+        display: none;
+      }
+
+      .open-cart-header {
+        display: none;
+      }
+    }
+  }
+
+  nav {
+    .menu-nav {
+      .menu-icon {
+        position: absolute;
+        right: 10px;
+        top: -50px;
+        padding: 0 5px;
+      }
+
+      .menu-tab {
+        width: 100%;
+        display: none;
+        text-align: center;
+        vertical-align: middle;
+        padding: 8px;
+        border-top: 1px solid rgb(231, 231, 231);
+      }
+    }
+  }
+
+  #menu-page {
+    margin: 51px 0 0 0;
+    padding-bottom: 45px;
+    min-height: calc(100vh - 51px);
+    width: 100%;
+
+    .menu-container {
+      width: calc(100% - 20px);
+
+      .main-page-container {
+        width: calc(100% - 40px);
+
+        .meme-container {
+          padding: 20px 30px 30px 30px;
+          box-shadow: 5px 5px 20px rgb(218, 218, 218);
+  
+          h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+          }
+  
+          img {
+            width: 100%;
+            height: 100%;
+            background-image: url('../images/im-a-potato.jpg');
+            background-size: contain;
+            background-repeat: none;
+          }
+        }
+      }
+    }
+
+    .open-cart-menu {
+      display: flex;
+      width: 100%;
+    }
+  }
+
+  footer {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 560px) {
+  #confirmation-page {
+    .confirmation-page-container {
+      h2 {
+        text-align: left;
+        font-size: 20px;
+      }
+
+      .order-details {
+        padding: 10px 40px;
+      }
+
+      .google-map {
+        width: calc(100% - 40px);
+        height: 50vw;
+
+        iframe {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  #header {
+    .company-name {
+      .company-logo {
+        font-size: 25px;
+      }
+      
+      h1 {
+        font-size: 25px;
+      }
+    }
   }
 }

@@ -1,7 +1,10 @@
 $(document).ready(() => {
   getNumberOfCartItems();
-  // getUsersLocation();
-
+  getUsersLocation();
+  
+  letUserFindOrder();
+  letEmployeeAddPickupTime();
+  letEmployeeCompleteOrder();
 
   if (!Cookies.get('cart')) {
     Cookies.set('cart', JSON.stringify({}));

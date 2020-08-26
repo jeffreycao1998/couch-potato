@@ -41,7 +41,7 @@ $(document).ready(() => {
         Cookies.set('cart', JSON.stringify({}));
         socket = io.connect('http://localhost:8080');
         socket.on('connect', () => {
-          socket.emit('order placed');
+          socket.emit('order placed', res);
         });
         window.location.assign('/orders/confirmation');
       });

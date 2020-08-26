@@ -7,7 +7,6 @@ const getDistanceFromStore = (userCoordinates) => {
   .then(res => {
     const { distance, duration } = JSON.parse(res);
 
-    $('.user-location').css('display', 'flex');
     $('.location-distance').text(`${distance.text}`);
     $('.location-drivingtime').text(`Driving: ${duration.text}`);
   });

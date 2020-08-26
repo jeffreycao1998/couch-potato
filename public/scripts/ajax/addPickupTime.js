@@ -7,7 +7,9 @@ const addPickupTime = (orderId, pickupTime) => {
   .catch(err => console.error(err));
 };
 
-$(document).ready(() => {
+const letEmployeeAddPickupTime = () => {
+  $('.add-pickup-time').off('click');
+
   $('.add-pickup-time').on('click', (event) => {
     const minutes = $(event.target).text();
     const orderId = event.target.className.split(' ')[1].slice(9);
@@ -22,7 +24,7 @@ $(document).ready(() => {
       pickupMinute = (pickupMinute % 60);
     }
 
-    if (pickupHour % 12 > 1) {
+    if (pickupHour / 12 > 1) {
       pickupHour = pickupHour % 12;
       ampm = 'pm'
     } else {
@@ -35,10 +37,15 @@ $(document).ready(() => {
     if (pickupHour < 10) {
       pickupHour = '0' + pickupHour.toString();
     }
-    
-    const pickupTime = `${pickupHour}:${pickupMinute}${ampm}`;
-    console.log(pickupTime);
 
-    addPickupTime(orderId, pickupTime);
+    let oldOrder = $(`.card-order-${orderId}`).clone();
+    oldOrder.find('.add-pickup-time-buttons').remove();
+    oldOrder = oldOrder.append(`<div class="pickup-time oldOrder-${orderId}">${ampm === 'pm' ? `${Number(pickupHour) + 12}:${pickupMinute}` : `${pickupHour}:${pickupMinute}` }</div>`);
+
+    $(`.card-order-${orderId}`).remove();
+    $('.processed-orders').append(oldOrder);
+    
+    addPickupTime(orderId, `${pickupHour}:${pickupMinute}${ampm}`);
+    letEmployeeCompleteOrder();
   });
-});
+};
