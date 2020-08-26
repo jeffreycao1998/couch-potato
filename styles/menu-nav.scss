@@ -16,6 +16,13 @@ nav {
     display: flex;
     justify-content: center;
     width: 100vw;
+
+    .menu-icon {
+      font-family: 'Teko';
+      font-weight: 600;
+      font-size: 60px;
+    }
+
     .menu-tab {
       width: 175px;
       height: 50px;
