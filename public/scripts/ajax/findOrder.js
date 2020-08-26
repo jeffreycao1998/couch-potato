@@ -1,7 +1,8 @@
 const letUserFindOrder = () => {
-  $('.find-order-deatils-button').on('click', () => {
+  $('.find-order-details-button').on('click', () => {
     const orderId = $('#find-order-id').val();
     
+    if (!orderId) return;
     window.location.assign(`/orders/${orderId}`);
   });
 };
