@@ -24,7 +24,7 @@ const letEmployeeAddPickupTime = () => {
       pickupMinute = (pickupMinute % 60);
     }
 
-    if (pickupHour % 12 > 1) {
+    if (pickupHour / 12 > 1) {
       pickupHour = pickupHour % 12;
       ampm = 'pm'
     } else {

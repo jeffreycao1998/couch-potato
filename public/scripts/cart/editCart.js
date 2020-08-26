@@ -8,8 +8,20 @@ const letUserEditCart = () => {
     delete cart[itemId];
     Cookies.set('cart', JSON.stringify(cart));
 
+    const total = getCartTotalPrice();
+    
+    if (total === 0) {
+      $('.checkout-button').addClass('disabled-checkout-button');
+      $('a').on('click', (event) => {
+        event.preventDefault();
+      });
+
+    } else {
+      $('a').off('click');
+      $('.checkout-button').removeClass('disabled-checkout-button');
+    }
+
     renderCartItems();
-    getCartTotalPrice();
     getNumberOfCartItems();
   });
 

@@ -2,6 +2,7 @@ function startTime() {
   var today = new Date();
   var h = today.getHours();
   var m = today.getMinutes();
+  h = checkTime(h);
   m = checkTime(m);
   $('.employee-sign').html(h + ":" + m);
   var t = setTimeout(startTime, 10000);

@@ -184,6 +184,15 @@
         }
       }
 
+      .disabled-checkout-button {
+        background-color: grey;
+        
+        &:hover {
+          cursor: default;
+          background-color: grey;
+        }
+      }
+
       .total-cost {
         position: absolute;
         right: 10px;

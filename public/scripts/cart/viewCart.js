@@ -4,9 +4,21 @@ $(document).ready(() => {
   getCartTotalPrice();
   
   // Reveals your cart
-  $('.open-cart').on('click', () => {
+  $('.open-cart').on('click', (event) => {
     renderCartItems();
-    getCartTotalPrice();
+    const total = getCartTotalPrice();
+
+    if (total === 0) {
+      $('.checkout-button').addClass('disabled-checkout-button');
+
+      $('a').on('click', (event) => {
+        event.preventDefault();
+      });
+
+    } else {
+      $('a').off('click');
+      $('.checkout-button').removeClass('disabled-checkout-button');
+    }
 
     currentPos = window.scrollY;
 
