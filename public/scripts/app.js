@@ -1,7 +1,8 @@
 $(document).ready(() => {
   getNumberOfCartItems();
   // getUsersLocation();
-
+  
+  letUserFindOrder();
   letEmployeeAddPickupTime();
   letEmployeeCompleteOrder();
 
