@@ -16,8 +16,8 @@ const storeOrderInDB = (db, client, message, cart, res, name, mobile) => {
 
         db.addItemToOrder(order.id, itemId, quantity, price)
       }
-      // sendSMS(orderMessage, process.env.CAMILO_NUMBER);
-      // sendSMS(`Hi, ${name}. \nYour order number is ${order.id}. \nYour total is $${total / 100} and we'll let you know when your order is ready!`, mobile);
+      sendSMS(orderMessage, process.env.CAMILO_NUMBER);
+      sendSMS(`Hi, ${name}. \nYour order number is ${order.id}. \nYour total is $${total / 100} and we'll let you know when your order is ready!`, mobile);
       return res.send(JSON.stringify({ order, cart }));
     });
 };
@@ -57,7 +57,7 @@ module.exports = (db, io) => {
 
     db.getNameAndMobile(orderId)
     .then(userDetails => {
-      // sendSMS(`Order #${orderId} ready at ${pickupTime}`, userDetails.mobile);
+      sendSMS(`Order #${orderId} ready at ${pickupTime}`, userDetails.mobile);
     })
   });
 

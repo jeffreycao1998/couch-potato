@@ -105,8 +105,8 @@ app.post("/create-checkout-session", async (req, res) => {
       ...products,
     ],
     mode: "payment",
-    success_url: `/orders/confirmation`,
-    cancel_url: "/orders/checkout",
+    success_url: "https://couch-potatoez.herokuapp.com/orders/confirmation",
+    cancel_url: "https://couch-potatoez.herokuapp.com/orders/checkout",
   });
 
   res.json({ id: session.id });
