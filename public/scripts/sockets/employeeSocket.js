@@ -7,6 +7,7 @@ if (window.location.pathname === '/employee') {
 
   // appends an order card to the /employee route
   socket.on('order placed', (data) => {
+    console.log('gettin');
     const { order, cart } = JSON.parse(data);
     const orderCreationTime = getHourMinute(order.time_created)
 

@@ -10,7 +10,7 @@ const morgan        = require('morgan');
 const cors          = require('cors');
 const db            = require('./database');
 const cookieSession = require('cookie-session');
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe        = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // Routes
 const apiRoutes    = require("./routes/api");
@@ -27,7 +27,6 @@ io.on('connection', socket => {
   });
 
   socket.on('order placed', (data) => {
-    console.log('order placed');
     io.to(ownerSocket).emit('order placed', data)
   });
 
@@ -68,8 +67,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/create-checkout-session", async (req, res) => {
-  const items = req.body;
-
+  const items = req.body.cart;
   const products = [];
 
   for (let item in items) {
@@ -85,11 +83,29 @@ app.post("/create-checkout-session", async (req, res) => {
     })
   }
 
+  let total = 0;
+  for (let product of products) {
+    total += product.price_data.unit_amount * product.quantity * .13;
+  }
+
+  products.push({
+    price_data: {
+      currency: 'cad',
+      product_data: {
+        name: 'Tax',
+      },
+      unit_amount: Math.round(total),
+    },
+    quantity: 1
+  })
+
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
-    line_items: [...products],
+    line_items: [
+      ...products,
+    ],
     mode: "payment",
-    success_url: "http://localhost:8080/orders/confirmation",
+    success_url: `http://localhost:8080/orders/confirmation`,
     cancel_url: "http://localhost:8080/orders/checkout",
   });
 

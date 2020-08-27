@@ -6,17 +6,46 @@
   justify-content: center;
   align-items: center;
   background-color: rgb(240, 240, 240);
+  position: relative;
+
+  .edit-menu-button {
+    position: absolute;
+    top: 25px;
+    right: 45px;
+    text-decoration: none;
+    color: white;
+    background-color: $colorGreen;
+    font-size: 25px;
+    font-weight: 600;
+    padding: 5px 20px;
+    border-radius: 4px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $colorGreenHover;
+    }
+  }
 
   .incoming-orders {
     border: 2px solid $colorRed;
-    width: 46%;
+    width: 47%;
     height: 80%;
     margin-right: 40px;
     border-radius: 4px;
     padding: 20px;
-    overflow-y: scroll;
-    column-width: 180px;
+    overflow-y: auto;
     column-count: 4;
+    @media only screen and (max-width: 1800px) {
+      column-count: 3;
+    }
+    @media only screen and (max-width: 1375px) {
+      column-count: 2;
+    }
+    @media only screen and (max-width: 930px) {
+      display: flex;
+      flex-direction: column;
+      column-count: initial;
+    }
 
     .order-card {
       border: 1px solid $colorRed;
@@ -25,7 +54,7 @@
       box-shadow: 2px 2px 10px rgb(211, 211, 211);
       background-color: rgb(255, 255, 255);
       break-inside: avoid;
-      margin: 10px 2px;
+      margin: 0 5px 10px 0;
 
       .order-information {
         display: flex;
@@ -98,12 +127,23 @@
 
   .processed-orders {
     border: 2px solid $colorGreen;
-    width: 46%;
+    width: 47%;
     height: 80%;
     border-radius: 4px;
     padding: 20px;
     overflow-y: auto;
     column-count: 4;
+    @media only screen and (max-width: 1800px) {
+      column-count: 3;
+    }
+    @media only screen and (max-width: 1375px) {
+      column-count: 2;
+    }
+    @media only screen and (max-width: 930px) {
+      display: flex;
+      flex-direction: column;
+      column-count: initial;
+    }
 
     .order-card {
       border: 1px solid $colorGreen;

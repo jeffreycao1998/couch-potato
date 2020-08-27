@@ -5,7 +5,7 @@ const getUsersLocation = () => {
         userLat: position.coords.latitude,
         userLng: position.coords.longitude
       }
-
+      $('.user-location').css('display', 'flex');
       loadMap(userCoords);
       getDistanceFromStore({
         "lat": position.coords.latitude,
