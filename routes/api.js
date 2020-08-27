@@ -9,13 +9,23 @@ module.exports = (db, io) => {
     });
   });
 
-  router.get('/menu/:id', (req, res) => {
-    db.getMenuItemsByCategory(req.params.id)
-    .then(menuItems => res.send(menuItems))
+  router.post('/menu/delete/:id', (req, res) => {
+    console.log(req.params.id)
+    db.deleteMenuItemById(req.params.id)
+    .then(results => res.send(results))
     .catch(e => {
-        console.error(e);
-        res.send(e)
+      console.error(e);
+      res.send(e)
     })
+  });
+
+  router.get('/menu/?', (req, res) => {
+    db.searchMenuItemByName(req.query.q)
+    .then(results => res.send(results))
+    .catch(e => {
+      console.error(e);
+      res.send(e)
+  })
   });
 
   router.post('/menu/new', (req, res) => {
@@ -27,6 +37,16 @@ module.exports = (db, io) => {
       res.send(e)
   })
   })
+
+
+  router.get('/menu/:id', (req, res) => {
+    db.getMenuItemsByCategory(req.params.id)
+    .then(menuItems => res.send(menuItems))
+    .catch(e => {
+        console.error(e);
+        res.send(e)
+    })
+  });
 
 
 

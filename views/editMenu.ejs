@@ -6,14 +6,18 @@
 
   <section id="edit-menu-page">
     <div class="edit-menu-banner">
-      <h2>ADD AN ITEM TO THE MENU</h2>
+      <h2>EDIT MENU</h2>
     </div>
 
     <div class="error-message-edit-menu">
       Wrong something!
     </div>
 
-    <div class="form-title">Please enter the details for the new product</div>
+  <div>
+
+    <div>
+
+      <div class="form-title">Please enter the details for the new product</div>
 
 
       <form method="POST" action="/api/menu/new" class="add-menu-item-form">
@@ -51,6 +55,28 @@
 
         <button class="submit-button"type="submit">Submit</button>
       </form>
+
+    </div>
+
+
+    <div class="search-delete">
+
+      <div class="form-title">... Or delete an existing product </div>
+      <form class="add-menu-item-form">
+        <div class="search-item-name">
+          <input type="text" id="search-item-name" name="name" placeholder=" " required>
+          <label for="item-name">Search Menu Item</label>
+        </div>
+        <button id="search-delete" class="submit-button"type="button">Search products</button>
+
+        <div class="item-to-delete-container">
+
+        </div>
+      </form>
+
+    </div>
+
+  </div>
 
 
 
