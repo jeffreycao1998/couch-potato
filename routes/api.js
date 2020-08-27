@@ -10,7 +10,6 @@ module.exports = (db, io) => {
   });
 
   router.post('/menu/delete/:id', (req, res) => {
-    console.log(req.params.id)
     db.deleteMenuItemById(req.params.id)
     .then(results => res.send(results))
     .catch(e => {

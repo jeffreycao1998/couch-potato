@@ -80,7 +80,6 @@ module.exports = (db, io) => {
 
 
   router.post('/login', (req, res) => {
-    console.log(req.body);
     const { employeeUsername, employeePassword } = req.body;
     if (employeeUsername === process.env.EMPLOYEE_USERNAME && employeePassword === process.env.EMPLOYEE_PASSWORD) {
       req.session.employee = true;
