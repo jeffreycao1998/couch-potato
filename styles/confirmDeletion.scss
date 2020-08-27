@@ -1,0 +1,83 @@
+#confirm-delete {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 99;
+  overflow: hidden;
+
+
+  .shade {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba($color: #000000, $alpha: .5);
+  }
+
+  .confirmation {
+    width: 50vw;
+    max-width: 100%;
+    height: 20vh;
+    position: fixed;
+    top: 30vh;
+    left: 25vw;
+    background-color: white;
+    overflow-y: auto;
+    padding: 20px;
+    border: solid;
+    border-radius: 4px;
+
+    .confirmation-buttons {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      .btn {
+        height: 25%;
+        padding: 15px;
+      }
+
+      .btn-confirm {
+        background-color: $colorGreen;
+        transition: background-color 0.2s ease-in-out;
+        border: none;
+        color: white;
+        border-radius: 4px;
+        position: relative;
+        outline: none;
+        margin-top: 20px;
+        margin-right: 20px;
+
+        &:hover {
+          cursor: pointer;
+          background-color: $colorGreenHover;
+        }
+      }
+
+      .btn-cancel {
+        background-color: $colorRed;
+        transition: background-color 0.2s ease-in-out;
+        border: none;
+        color: white;
+        border-radius: 4px;
+        position: relative;
+        outline: none;
+        margin-top: 20px;
+
+        &:hover {
+          cursor: pointer;
+          background-color: $colorRedHover;
+        }
+
+      }
+    }
+
+
+  }
+
+
+}
