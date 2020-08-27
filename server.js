@@ -24,7 +24,6 @@ let ownerSocket = null;
 io.on('connection', socket => {
   socket.on('owner connected', () => {
     ownerSocket = socket.id;
-    console.log(ownerSocket);
   });
 
   socket.on('order placed', (data) => {
