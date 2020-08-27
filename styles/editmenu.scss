@@ -156,3 +156,47 @@
   }
 }
 
+
+.item-to-delete-container {
+  display: flex;
+  flex-direction: column;
+
+  .delete-item {
+    display: flex;
+    width: 100%;
+    margin: 10px;
+    justify-content: space-around;
+    align-items: center;
+
+    .delete-item-column-1 {
+      width: 65%;
+    }
+
+    .delete-item-column-2 {
+      width: 30%;
+      margin-right: 20px;
+      text-align: center;
+
+    }
+  }
+
+
+  .delete-button {
+    background-color: $colorGreen;
+    transition: background-color 0.2s ease-in-out;
+    color: white;
+    border-radius: 4px;
+    position: relative;
+    outline: none;
+    padding: 0px 30px;
+    justify-self: flex-end;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $colorGreenHover;
+    }
+  }
+
+
+}
+
