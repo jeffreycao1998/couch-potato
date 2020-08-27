@@ -52,7 +52,10 @@ $(document).ready(() => {
             headers: {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify(cart),
+            body: JSON.stringify({
+              cart,
+              name: {firstname, lastname}
+            }),
           })
           .then(function(response) {
             return response.json();
@@ -71,7 +74,7 @@ $(document).ready(() => {
             console.error('Error:', error);
           });
         } else {
-          window.location.assign('/orders/confirmation');
+          window.location.assign(`/orders/confirmation`);
         }
       });
     } else {

@@ -4,9 +4,10 @@
 <%- include('partials/_employeeHeader', {}) %>
 <body>
   <section id="employee-main-page">
+
+    <a class="edit-menu-button" href='/employee/edit'>Edit Menu</a>
   
     <div class="incoming-orders">
-
       <% for (let order in newOrders) { %>
         <div class="order-card card-order-<%= order %>">
           <div class="order-information">
@@ -39,14 +40,12 @@
             <h4 class="order-num"><a href="/orders/<%= order %>" target="_blank">#<%= order %></a></h4>
             <h4 class="order-time"><%= oldOrders[order].time_created %></h4>
           </div>
-
           <% for (let item in oldOrders[order].items) { %>
             <div class="order-item">
               <h4 class="item-quantity"><%= oldOrders[order].items[item] %>x</h4>
               <h4 class="item-name"><%= item %></h4>
             </div>
           <% } %>
-          
           <div class="message"><%= oldOrders[order].message ? '*' + oldOrders[order].message : ''  %></div>
           <div class="pickup-time oldOrder-<%= order %>"><%= oldOrders[order].estimated_pickup %></div>
         </div>
@@ -55,5 +54,4 @@
 
   </section>
 </body>
-<%- include partials/_footer %>
 </html>

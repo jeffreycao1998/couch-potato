@@ -8,6 +8,10 @@ module.exports = (db, io) => {
     res.render('employeeLogin');
   });
 
+  router.get('/edit', (req, res) => {
+    res.render('editMenu');
+  });
+
   router.get('/', (req, res) => {
     const employee = req.session.employee;
     const newOrders = {};
