@@ -87,7 +87,7 @@ module.exports = (db, io) => {
     } else {
       req.session.employee = null;
     }
-    res.redirect('/employee/');
+    res.redirect('/employee');
   });
 
 
