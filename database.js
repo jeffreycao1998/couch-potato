@@ -34,6 +34,20 @@ const getMenuItemsByCategory = function(category_id) {
 exports.getMenuItemsByCategory = getMenuItemsByCategory;
 
 
+
+const searchMenuItemByName = function(name) {
+  return db.query(`
+  SELECT *
+  FROM menu_items
+  WHERE lower(name) LIKE $1
+  `, [`%${name}%`])
+  .then(res => res.rows)
+  .catch(e => console.error(e.stack));
+}
+exports.searchMenuItemByName = searchMenuItemByName;
+
+
+
 const addItemToMenu = function(name, category_id, price, phot_url, description) {
   return db.query(`
   INSERT INTO menu_items (name, category_id, price, photo_url, description)
@@ -44,6 +58,19 @@ const addItemToMenu = function(name, category_id, price, phot_url, description) 
   .catch(e => console.error(e.stack));
 }
 exports.addItemToMenu = addItemToMenu;
+
+
+const deleteMenuItemById = function(id) {
+  return db.query(`
+  DELETE FROM menu_items
+  WHERE id = $1
+  RETURNING *
+  `, [id])
+  .then(res => res.rows[0])
+  .catch(e => console.error(e.stack));
+}
+
+exports.deleteMenuItemById = deleteMenuItemById;
 
 // Orders
 /***
