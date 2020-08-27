@@ -77,6 +77,11 @@
     flex-wrap: wrap;
     margin-top: 20px;
 
+    .description-label {
+      border: none;
+      margin-bottom: 2px;
+    }
+
     & > *{
       width: 100%;
       border: 2px solid black;
@@ -127,12 +132,16 @@
 
   .description {
     margin-top: 10px;
+    border-radius: 4px;
+    padding: 4px;
     color: rgb(70, 70, 70);
     width: 500px;
     height: 100px;
     text-align: center;
     font-size: 16px;
     position: relative;
+    resize: none;
+    text-align: left;
   }
 
   .submit-button {
