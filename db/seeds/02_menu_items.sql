@@ -15,6 +15,8 @@ INSERT INTO menu_items (name, category_id, price, photo_url, description) VALUES
 
 INSERT INTO menu_items (name, category_id, price, photo_url, description) VALUES ('Vegan sweet potato shepherds pie', 2,  899, 'https://www.fitfoodienutter.com/wp-content/uploads/2018/01/Vegan-shepherds-pie-15.jpg', 'Our own twist on an all time family favorite');
 
+INSERT INTO menu_items (name, category_id, price, photo_url, description) VALUES ('Baked colcannon', 2,  999, 'https://www.irishtimes.com/polopoly_fs/1.4052775.1571238754!/image/image.jpg_gen/derivatives/landscape_620/image.jpg', 'Our own twist on an all time family favorite');
+
 
 INSERT INTO menu_items (name, category_id, price, photo_url, description) VALUES  ('House fries', 3, 699, 'https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', 'You can''t go wrong with an all time classic');
 
@@ -28,3 +30,6 @@ INSERT INTO menu_items (name, category_id, price, photo_url, description) VALUES
 
 
 INSERT INTO menu_items (name, category_id, price, photo_url, description) VALUES  ('Sweet potato brownie', 5, 899, 'https://www.sweetcannela.com/wp-content/uploads/2015/06/SPB2-1024x1024.jpg', 'We know what you''re thinking, but it is not too good to be true');
+
+
+

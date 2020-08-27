@@ -241,3 +241,18 @@ const completeOrderOnDB = (orderId) => {
   .catch(e => console.error(e));
 };
 exports.completeOrderOnDB = completeOrderOnDB;
+
+const getNameAndMobile = (orderId) => {
+  const queryString = `
+  SELECT clients.mobile as mobile 
+  FROM orders
+  JOIN clients ON orders.client_id = clients.id
+  WHERE orders.id = $1;`
+
+  const values = [orderId];
+
+  return db.query(queryString, values)
+  .then(userDetails => userDetails.rows[0])
+  .catch(e => console.error(e));
+};
+exports.getNameAndMobile = getNameAndMobile

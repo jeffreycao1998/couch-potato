@@ -1,7 +1,26 @@
 const express = require('express');
 const router  = express.Router();
 const { sendSMS } = require('../server_scripts/sendSMS');
-const crypto = require('crypto');
+
+const storeOrderInDB = (db, client, message, cart, res, name, mobile) => {
+  db.createOrder(client.id, message)
+    .then(order => {
+      let total = 0;
+      let orderMessage = `New Order: #${order.id}\n`
+      for (let itemId in cart) {
+        const quantity = cart[itemId].quantity;
+        const price = cart[itemId].price * quantity;
+        total += price;
+
+        orderMessage += `${cart[itemId].quantity}x ${cart[itemId].name}\n`
+
+        db.addItemToOrder(order.id, itemId, quantity, price)
+      }
+      // sendSMS(orderMessage, process.env.CAMILO_NUMBER);
+      // sendSMS(`Hi, ${name}. \nYour order number is ${order.id}. \nYour total is $${total / 100} and we'll let you know when your order is ready!`, mobile);
+      return res.send(JSON.stringify({ order, cart }));
+    });
+};
 
 module.exports = (db, io) => {
   router.get("/checkout", (req, res) => {
@@ -15,42 +34,16 @@ module.exports = (db, io) => {
   router.post("/place_order", (req, res) => {
     const { name, mobile, message } = req.body;
     const cart = JSON.parse(req.body.cart);
-    // const firstname = name.split(' ')[0];
-    // const lastname = name.split(' ')[1];
 
     db.findClient(name, mobile)
     .then(client => {
       if (!client) {
         db.addClient({name, mobile})
         .then((client) => {
-          db.createOrder(client.id, message)
-          .then(order => {
-            let total = 0;
-            for (let itemId in cart) {
-              const quantity = cart[itemId].quantity;
-              const price = cart[itemId].price * quantity;
-              total += price;
-
-              db.addItemToOrder(order.id, itemId, quantity, price)
-            }
-            // sendSMS(`Hi, ${name}. Your order number is ${order.id}. Your total is $${total / 100}.`, mobile);
-            return res.send(JSON.stringify({ order, cart }));
-          });
+          storeOrderInDB(db, client, message, cart, res, name, mobile);
         });
       } else {
-        db.createOrder(client.id, message)
-        .then(order => {
-          let total = 0;
-          for (let itemId in cart) {
-            const quantity = cart[itemId].quantity;
-            const price = cart[itemId].price * quantity;
-            total += price;
-
-            db.addItemToOrder(order.id, itemId, quantity, price)
-          }
-          // sendSMS(`Hi, ${name}. Your order number is ${order.id}. Your total is $${total / 100}.`, mobile);
-          return res.send(JSON.stringify({ order, cart }));
-        });
+        storeOrderInDB(db, client, message, cart, res, name, mobile);
       }
     });
   });
@@ -61,6 +54,11 @@ module.exports = (db, io) => {
     db.updatePickupTime(orderId, pickupTime)
     .then(result => res.end())
     .catch(err => console.error(err));
+
+    db.getNameAndMobile(orderId)
+    .then(userDetails => {
+      // sendSMS(`Order #${orderId} ready at ${pickupTime}`, userDetails.mobile);
+    })
   });
 
   router.put('/complete', (req, res) => {
