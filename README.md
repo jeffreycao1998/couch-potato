@@ -2,6 +2,10 @@
 
 Live preview on Heroku: [Couch Potato](https://couch-potatoez.herokuapp.com/).
 
+# Features
+Home Page
+![](https://i.gyazo.com/fa7ca86e4d0e712b8bca55c58c83576f.jpg)
+
 # Order Placement
 
 At the checkout screen, if you choose to pay with 'Card' you'll be brought to a stripe checkout session. Since this is a fictitious website you'll need a fictitious credit card! To test out the stripe checkout use the visa card # 4242 4242 4242, any expiry date in the future, and any cvv number.
