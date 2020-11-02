@@ -1,33 +1,33 @@
-# Couch Potato
+## Couch Potato
 
 Live preview on Heroku: [Couch Potato](https://couch-potatoez.herokuapp.com/).
 
-# Pages
-Home Page
+## Pages
+# Home Page
 ![](https://i.gyazo.com/fa7ca86e4d0e712b8bca55c58c83576f.jpg)
 
-Menu
+# Menu
 ![](https://i.gyazo.com/a1fe876a12d786d76f667ce580c2ae6f.jpg)
 
-Cart
+# Cart
 ![](https://i.gyazo.com/617aab9fbc6dc4c323937508cbb59804.png)
 
-Order Form
+# Order Form
 ![](https://i.gyazo.com/7892e822b378c58b466689e8701e692d.png)
 
-Stripe Checkout
+# Stripe Checkout
 ![](https://i.gyazo.com/9a08b30ff3f77cdbaf281b53a8986e79.png)
 
-Confirmation Page (Directions to the "store". I don't have a real store so I used the Toronto Zoo)
+# Confirmation Page (Directions to the "store". I don't have a real store so I used the Toronto Zoo)
 ![](https://i.gyazo.com/ab8f4af0e33d86e5fc37328ee458a18a.png)
 
-Text Message Confirmation via Twilio
+# Text Message Confirmation via Twilio
 ![](https://i.gyazo.com/61c2b75cf1201e3eab0afa518b3a5335.png)
 
-Order Lookup (from the home page)
+# Order Lookup (from the home page)
 ![](https://i.gyazo.com/4ed0a2b93b7a5816a09955a862147538.png)
 
-Real-Time Orders Management System for Employees
+# Real-Time Orders Management System for Employees
 ![](https://i.gyazo.com/3ff9704e671547caa29bba4e86c6ae3b.png)
 
 # Order Placement
