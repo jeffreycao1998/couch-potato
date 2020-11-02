@@ -3,7 +3,7 @@
 
 Live preview on Heroku: [Couch Potato](https://couch-potatoez.herokuapp.com/).
 
-# Pages
+# Final Product
 ## Home Page
 ![](https://i.gyazo.com/fa7ca86e4d0e712b8bca55c58c83576f.jpg)
 
