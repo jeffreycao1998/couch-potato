@@ -1,5 +1,5 @@
 ## Couch Potato
-
+> :warning: **Because Heroku turns off the server after a few minutes of inactivity you have to wait for it to spin up when you first go to the website and then refresh the page before everything starts working. In the mean time, look at the pretty pictures below :)**
 Live preview on Heroku: [Couch Potato](https://couch-potatoez.herokuapp.com/).
 
 ## Pages
